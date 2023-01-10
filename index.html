@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html><html lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>Newt Pictures</title>
+	<meta name="description" content="Official website of Newt Pictures." />
+	<link rel="icon" type="image/png" sizes="192x192" href="src/icons/icon_192.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="src/icons/icon_96.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="src/icons/icon_32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="src/icons/icon_16.png">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="src/icons/icon_144.png">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="canonical" href="">
+	<meta name="keywords" content="Newt, TV Shows, Online Videos, Episodes, Animation, Cartoons">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+	<link rel="stylesheet" href="src/stylesheet.css" />
+</head>
+<body onload="pg_fload()">
+	<header>
+		<span id="Head_Toggle" class="material-symbols-outlined" onclick="toggle_menu()">menu</span>
+		<a href="index.html"><img src="src/Newt.svg" draggable="false" id="Header_Logo" /></a>
+		<ul id="hdr_ul">
+			<li><a href="licensing/index.html">Licensing</a></li>
+			<li><a href="https://forms.google.com/" target="_blank">Contact <span class="material-symbols-outlined">arrow_outward</span></a></li>
+		</ul>
+	</header>
+	<div id="Head_Img"></div>
+	<div id="Head_Img_Title">
+		<h1>I NEED SOMETHING TO DO</h1>
+		<hr id="Head_Img_HR" />
+		<h5>LET ME KNOW IF I CAN BE OF ASSISTANCE</h5>
+	</div>
+	<footer>
+		<ul class="ftr_ul" id="ftr_ul_legal">
+			<h5>Legal</h5>
+			<!--<li><a href="legal/terms/index.html" target="_self">Terms of Use</a></li>
+			<li><a href="legal/privacy/index.html" target="_self">Privacy Policy</a></li>-->
+			<li><a href="https://forms.google.com/" target="_blank">Contact <span class="material-symbols-outlined">arrow_outward</span></a></li>
+		</ul>
+		<ul class="ftr_ul" id="ftr_ul_socials">
+			<h5>Social Media</h5>
+			<li><a href="https://www.youtube.com/" target="_blank">YouTube <span class="material-symbols-outlined">arrow_outward</span></a></li>
+			<!--<li><a href="https://www.spotify.com/" target="_blank">Spotify <span class="material-symbols-outlined">arrow_outward</span></a></li>-->
+		</ul>
+	</footer>
+	<div id="load_overlay"></div>
+	<div id="js_error">
+		<img src="src/error_triangle.svg" draggable="false" /> <h1>OOPSIES!</h1>
+		<h4>Check if your browser has Javascript enabled.</h4>
+	</div>
+	<script src="src/script.js"></script>
+</body>
+</html>
