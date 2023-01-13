@@ -4,13 +4,15 @@ var menu_stat = false;
 var load_overlay = document.getElementById("load_overlay");
 var load_overlay_anim = document.getElementById("load_overlay_anim");
 var load_overlay_text = document.getElementById("load_overlay_text");
-var hdr_img_hr = document.getElementById("Head_Img_HR");
 
-function pg_fload() {
+function pg_fload(nm) {
 	setTimeout(function () {
-		hdr_img_hr.style.animation = "3s hr_expand 1";
-		hdr_img_hr.style.width = "940px";
-		hdr_img_hr.style.left = "calc(50% - 470px)";
+		if (nm == "main") {
+			var hdr_img_hr = document.getElementById("Head_Img_HR");
+			hdr_img_hr.style.animation = "3s hr_expand 1";
+			hdr_img_hr.style.width = "940px";
+			hdr_img_hr.style.left = "calc(50% - 470px)";
+		}
 
 		load_overlay.style.animation = "1s finished_loading 1";
 		load_overlay_anim.style.animation = "1s finished_loading 1";
@@ -19,7 +21,7 @@ function pg_fload() {
 			load_overlay.style.display = "none";
 			load_overlay_anim.style.display = "none";
 			load_overlay_text.style.display = "none";
-		}, 990);
+		}, 980);
 	}, 1000);
 }
 

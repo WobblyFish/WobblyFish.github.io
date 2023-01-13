@@ -110,6 +110,8 @@ body {
 header {
 	width: 100%;
 	height: 100px;
+	background: #F2F2F2;
+	box-shadow: 0px -2px 20px rgba(0,0,0,0.6);
 	position: fixed;
 	z-index: 100;
 	top: 0px;
@@ -188,7 +190,7 @@ header {
 }
 #Head_Img {
 	width: 100%;
-	height: 530px;
+	height: 500px;
 	background-image: url('caution_cones_stock.jpeg');
 	background-size: cover;
 	background-position: center 80px;
@@ -236,6 +238,34 @@ header {
 		top: 130px;
 		left: 0px;
 	}
+#trademarks_page {
+	width: 100%;
+	height: 500px;
+	overflow: hidden;
+	position: absolute;
+	top: 100px;
+	left: 0px;
+}
+	#trademarks_page h1 {
+		margin: 0px;
+		position: relative;
+		top: 60px;
+		left: 100px;
+	}
+	#trademarks_page h1 {
+		margin: 0px;
+		position: relative;
+		top: 60px;
+		left: 100px;
+	}
+	#trademarks_page span {
+		display: block;
+		width: calc(100% - 200px);
+		margin: 0px;
+		position: relative;
+		top: 60px;
+		left: 100px;
+	}
 @keyframes hr_expand {
 	0% {
 		width: 40px;
@@ -252,10 +282,9 @@ header {
 }
 footer {
 	width: 100%;
-	height: 110px;
+	height: 140px;
 	background: #F2F2F2;
 	position: absolute;
-	top: 630px;
 	left: 0px;
 }
 	footer a {
@@ -343,6 +372,9 @@ footer {
 		height: 200px;
 		left: calc(50% - 100px);
 	}
+	header {
+		height: 200px;
+	}
 	#hdr_ul {
 		display: none;
 		height: calc(100% - 200px);
@@ -394,8 +426,18 @@ footer {
 		#Head_Img_Title h5 {
 			top: 100px;
 		}
+	#trademarks_page {
+		height: 1700px;
+		top: 200px;
+	}
+		#trademarks_page h1 {
+			font-size: 84px;
+		}
+		#trademarks_page span {
+			font-size: 48px;
+		}
 	footer {
-		top: 1400px;
+		height: 300px;
 	}
 	#ftr_ul_legal {
 		left: calc(25% - 150px);
