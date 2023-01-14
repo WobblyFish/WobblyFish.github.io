@@ -447,6 +447,28 @@ header {
 	top: 442px;
 }
 
+#NotFoundPage h1 {
+	width: 100%;
+	font-size: 108px;
+	text-align: center;
+	letter-spacing: 5px;
+	margin: 0px;
+	position: fixed;
+	top: calc(50% - 120px);
+	left: 0px;
+}
+
+#NotFoundPage h5 {
+	width: 100%;
+	font-size: 48px;
+	text-align: center;
+	letter-spacing: 5px;
+	margin: 0px;
+	position: fixed;
+	top: calc(50% + 30px);
+	left: 0px;
+}
+
 @keyframes hr_expand {
 	0% {
 		width: 40px;
