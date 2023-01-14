@@ -1,3 +1,5 @@
+alert(document.URL);
+
 document.getElementById("js_error").style.display = "none";
 var menu_stat = false;
 
