@@ -1,6 +1,6 @@
 if (document.URL.substr(0,7) == "http://") {
 	var wndNewURL = "https://" + document.URL.substr(7);
-	alert(wndNewURL);
+	window.open(wndNewURL, "_self");
 }
 
 document.getElementById("js_error").style.display = "none";
