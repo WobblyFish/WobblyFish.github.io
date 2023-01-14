@@ -1,4 +1,7 @@
-alert(document.URL);
+if (document.URL.substr(0,7) == "http://") {
+	var wndNewURL = "https://" + document.URL.substr(7);
+	alert(wndNewURL);
+}
 
 document.getElementById("js_error").style.display = "none";
 var menu_stat = false;
