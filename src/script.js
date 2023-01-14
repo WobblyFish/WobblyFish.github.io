@@ -52,7 +52,7 @@ function toggle_menu() {
 }
 
 function videoServicePlay(b) {
-	document.getElementById("videoService_Play").style.backgroundImage = "url('file:///C:/Users/reed5/source/repos/Newt_Website/src/play.svg')";
+	document.getElementById("videoService_Play").style.backgroundImage = "url('/src/play.svg')";
 	if (b) {
 		document.getElementById("videoService_Video").play();
 		document.getElementById("videoService_Play").style.display = "none";
@@ -74,7 +74,7 @@ setInterval(function () {
 	if (document.getElementById("videoService_Video").currentTime == document.getElementById('videoService_Video').duration) {
 		document.getElementById("videoService_Play").style.display = "block";
 		document.getElementById("videoService_Dimmer").style.background = "rgba(0,0,0,0.5)";
-		document.getElementById("videoService_Play").style.backgroundImage = "url('file:///C:/Users/reed5/source/repos/Newt_Website/src/replay.svg')";
+		document.getElementById("videoService_Play").style.backgroundImage = "url('/src/replay.svg')";
 	}
 }, 17);
 
