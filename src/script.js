@@ -5,7 +5,20 @@ var load_overlay = document.getElementById("load_overlay");
 var load_overlay_anim = document.getElementById("load_overlay_anim");
 var load_overlay_text = document.getElementById("load_overlay_text");
 
+function prepVidTime(vTmStr) {
+	var vTmRNum = Math.round(Number(vTmStr));
+	if (vTmRNum < 10) {
+		return "0:0" + vTmRNum;
+	}
+	else if (vTmRNum < 60) {
+		return "0:" + vTmRNum;
+	}
+}
+
 function pg_fload(nm) {
+	if (nm == "videoService") {
+		document.getElementById('videoService_VDur').innerText = "0:00 / " + prepVidTime(document.getElementById('videoService_Video').duration);
+	}
 	setTimeout(function () {
 		if (nm == "main") {
 			var hdr_img_hr = document.getElementById("Head_Img_HR");
@@ -17,6 +30,9 @@ function pg_fload(nm) {
 		load_overlay.style.animation = "1s finished_loading 1";
 		load_overlay_anim.style.animation = "1s finished_loading 1";
 		load_overlay_text.style.animation = "1s finished_loading 1";
+		load_overlay.style.opacity = "0";
+		load_overlay_anim.style.opacity = "0";
+		load_overlay_text.style.opacity = "0";
 		setTimeout(function () {
 			load_overlay.style.display = "none";
 			load_overlay_anim.style.display = "none";
@@ -32,5 +48,43 @@ function toggle_menu() {
 	}
 	else {
 		document.getElementById("hdr_ul").style.display = "none";
+	}
+}
+
+function videoServicePlay(b) {
+	document.getElementById("videoService_Play").style.backgroundImage = "url('file:///C:/Users/reed5/source/repos/Newt_Website/src/play.svg')";
+	if (b) {
+		document.getElementById("videoService_Video").play();
+		document.getElementById("videoService_Play").style.display = "none";
+		document.getElementById("videoService_Dimmer").style.background = "rgba(0,0,0,0)";
+	}
+	else {
+		document.getElementById("videoService_Video").pause();
+		document.getElementById("videoService_Play").style.display = "block";
+		document.getElementById("videoService_Dimmer").style.background = "rgba(0,0,0,0.5)";
+	}
+}
+
+setInterval(function () {
+	document.getElementById("videoService_VDur").innerText = prepVidTime(document.getElementById('videoService_Video').currentTime) + " / " + prepVidTime(document.getElementById('videoService_Video').duration);
+	var vidProgWPct = ((document.getElementById('videoService_Video').currentTime / document.getElementById('videoService_Video').duration) * 90);
+	document.getElementById("videoService_VProg").style.width = vidProgWPct + "%";
+	document.getElementById("videoService_VProgPin").style.left = "calc(" + (vidProgWPct + 5) + "% - 7px)";
+	document.getElementById("videoService_VDur").style.left = "calc(" + (vidProgWPct + 5) + "% - " + (document.getElementById("videoService_VDur").getBoundingClientRect().width / 2) + "px)";
+	if (document.getElementById("videoService_Video").currentTime == document.getElementById('videoService_Video').duration) {
+		document.getElementById("videoService_Play").style.display = "block";
+		document.getElementById("videoService_Dimmer").style.background = "rgba(0,0,0,0.5)";
+		document.getElementById("videoService_Play").style.backgroundImage = "url('file:///C:/Users/reed5/source/repos/Newt_Website/src/replay.svg')";
+	}
+}, 17);
+
+function videoServiceDownloadMenu(b) {
+	if (b) {
+		document.getElementById("videoService_DldDimmer").style.display = "block";
+		document.getElementById("videoService_DldMenu").style.display = "block";
+	}
+	else {
+		document.getElementById("videoService_DldDimmer").style.display = "none";
+		document.getElementById("videoService_DldMenu").style.display = "none";
 	}
 }
