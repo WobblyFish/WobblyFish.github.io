@@ -22,7 +22,18 @@ function prepVidTime(vTmStr) {
 
 function pg_fload(nm) {
 	if (nm == "videoService") {
-		document.getElementById('videoService_VDur').innerText = "0:00 / " + prepVidTime(document.getElementById('videoService_Video').duration);
+		setInterval(function () {
+			document.getElementById("videoService_VDur").innerText = prepVidTime(document.getElementById('videoService_Video').currentTime) + " / " + prepVidTime(document.getElementById('videoService_Video').duration);
+			var vidProgWPct = ((document.getElementById('videoService_Video').currentTime / document.getElementById('videoService_Video').duration) * 90);
+			document.getElementById("videoService_VProg").style.width = vidProgWPct + "%";
+			document.getElementById("videoService_VProgPin").style.left = "calc(" + (vidProgWPct + 5) + "% - 7px)";
+			document.getElementById("videoService_VDur").style.left = "calc(" + (vidProgWPct + 5) + "% - " + (document.getElementById("videoService_VDur").getBoundingClientRect().width / 2) + "px)";
+			if (document.getElementById("videoService_Video").currentTime == document.getElementById('videoService_Video').duration) {
+				document.getElementById("videoService_Play").style.display = "block";
+				document.getElementById("videoService_Dimmer").style.background = "rgba(0,0,0,0.5)";
+				document.getElementById("videoService_Play").style.backgroundImage = "url('/src/replay.svg')";
+			}
+		}, 17);
 	}
 	setTimeout(function () {
 		if (nm == "main") {
@@ -69,19 +80,6 @@ function videoServicePlay(b) {
 		document.getElementById("videoService_Dimmer").style.background = "rgba(0,0,0,0.5)";
 	}
 }
-
-setInterval(function () {
-	document.getElementById("videoService_VDur").innerText = prepVidTime(document.getElementById('videoService_Video').currentTime) + " / " + prepVidTime(document.getElementById('videoService_Video').duration);
-	var vidProgWPct = ((document.getElementById('videoService_Video').currentTime / document.getElementById('videoService_Video').duration) * 90);
-	document.getElementById("videoService_VProg").style.width = vidProgWPct + "%";
-	document.getElementById("videoService_VProgPin").style.left = "calc(" + (vidProgWPct + 5) + "% - 7px)";
-	document.getElementById("videoService_VDur").style.left = "calc(" + (vidProgWPct + 5) + "% - " + (document.getElementById("videoService_VDur").getBoundingClientRect().width / 2) + "px)";
-	if (document.getElementById("videoService_Video").currentTime == document.getElementById('videoService_Video').duration) {
-		document.getElementById("videoService_Play").style.display = "block";
-		document.getElementById("videoService_Dimmer").style.background = "rgba(0,0,0,0.5)";
-		document.getElementById("videoService_Play").style.backgroundImage = "url('/src/replay.svg')";
-	}
-}, 17);
 
 function videoServiceDownloadMenu(b) {
 	if (b) {
