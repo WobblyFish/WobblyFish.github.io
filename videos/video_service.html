@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>Newtimations</title>
+	<meta name="description" content="Official website of Newtimations." />
+	<link rel="icon" type="image/png" sizes="192x192" href="/Users/reed5/source/repos/Newt_Website/src/icons/icon_192.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/Users/reed5/source/repos/Newt_Website/src/icons/icon_96.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/Users/reed5/source/repos/Newt_Website/src/icons/icon_32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/Users/reed5/source/repos/Newt_Website/src/icons/icon_16.png">
+	<meta name="msapplication-TileColor" content="#4BDBFC">
+	<meta name="msapplication-TileImage" content="/Users/reed5/source/repos/Newt_Website/src/icons/icon_144.png">
+	<meta name="theme-color" content="#4BDBFC">
+	<link rel="canonical" href="">
+	<meta name="keywords" content="Newt, TV Shows, Online Videos, Episodes, Animation, Cartoons">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+	<link rel="stylesheet" href="/Users/reed5/source/repos/Newt_Website/src/stylesheet.css" />
+</head>
+<body onload="pg_fload('videoService')">
+	<header>
+		<span id="Head_Toggle" class="material-symbols-outlined" onclick="toggle_menu()">menu</span>
+		<a href="/"><img src="/Users/reed5/source/repos/Newt_Website/src/Newt.svg" draggable="false" id="Header_Logo" /></a>
+		<ul id="hdr_ul">
+			<!--<li><a href="/licensing/">Licensing</a></li>-->
+			<li><a href="https://forms.google.com/" target="_blank">Contact <span class="material-symbols-outlined">arrow_outward</span></a></li>
+		</ul>
+	</header>
+	<div id="videoService_Frame">
+		<video id="videoService_Video">
+			<source src="Wagon.mp4" type="video/mp4" />
+			Your browser does not support the video tag.
+		</video>
+		<div id="videoService_Dimmer" onclick="videoServicePlay(false)"></div>
+		<button id="videoService_Play" onclick="videoServicePlay(true)"></button>
+		<button id="videoService_DownloadBtn" onclick="videoServiceDownloadMenu(true)"><span class="material-symbols-outlined">download</span> Download</button>
+		<div id="videoService_VProgBg"></div>
+		<div id="videoService_VProg"></div>
+		<div id="videoService_VProgPin"></div>
+		<h6 id="videoService_VDur">0:00 / 0:00</h6>
+	</div>
+	<div id="videoService_DldDimmer" onclick="videoServiceDownloadMenu(false)"></div>
+	<ul id="videoService_DldMenu">
+		<h3>Download</h3>
+		<li><a href="Wagon.mp4" target="_blank" download>MP4</a></li>
+		<li><a href="Wagon.mp4" target="_blank" download>MOV</a></li>
+		<li><a href="Wagon.mp4" target="_blank" download>AVI</a></li>
+	</ul>
+	<footer>
+		<ul class="ftr_ul" id="ftr_ul_legal">
+			<h5>Legal</h5>
+			<li><a href="https://forms.google.com/" target="_blank">Contact <span class="material-symbols-outlined">arrow_outward</span></a></li>
+		</ul>
+		<ul class="ftr_ul" id="ftr_ul_socials">
+			<h5>Social Media</h5>
+			<li><a href="https://www.youtube.com/" target="_blank">YouTube <span class="material-symbols-outlined">arrow_outward</span></a></li>
+		</ul>
+	</footer>
+	<div id="load_overlay"></div>
+	<img src="/Users/reed5/source/repos/Newt_Website/src/Newt_Wagon.gif" id="load_overlay_anim" draggable="false" />
+	<h3 id="load_overlay_text">LOADING...</h3>
+	<div id="js_error">
+		<img src="/Users/reed5/source/repos/Newt_Website/src/error_triangle.svg" draggable="false" /> <h1>OOPSIES!</h1>
+		<h4>Check if your browser has Javascript enabled.</h4>
+	</div>
+	<script src="/Users/reed5/source/repos/Newt_Website/src/script.js"></script>
+	<style>
+		footer {
+			top: 600px;
+		}
+
+		@media (max-width: 1000px) {
+			footer {
+				top: 1400px;
+			}
+		}
+	</style>
+</body>
+</html>
