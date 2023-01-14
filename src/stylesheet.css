@@ -330,7 +330,7 @@ header {
 	box-sizing: border-box;
 	border: 5px solid #078FA4;
 	border-radius: 12px;
-	background-image: url('file:///C:/Users/reed5/source/repos/Newt_Website/src/play.svg');
+	background-image: url('/src/play.svg');
 	background-size: 100px 100px;
 	background-position: center;
 	background-repeat: no-repeat;
