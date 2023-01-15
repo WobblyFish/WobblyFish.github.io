@@ -6,7 +6,7 @@ if (document.URL.substr(0, 7) == "http://") {
 var videoService_videoTags = [
 	["TEST", "Newt Wagon",
 		[					// Playable source videos (BELOW)
-			["wagon.mp4", "video/mp4"],
+			["Wagon.mp4", "video/mp4"],
 		], [					// Downloadable videos (BELOW)
 			["MP4", "Wagon.mp4"],
 			["MP4", "Wagon.mp4"],
