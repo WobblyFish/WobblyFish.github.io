@@ -147,6 +147,10 @@ header {
 	height: 100px;
 	text-decoration: none;
 	margin: 0px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	position: fixed;
 	z-index: 101;
 	top: 0px;
@@ -172,6 +176,10 @@ header {
 		display: inline-block;
 		margin: 0px 5px;
 		padding: 0px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 		position: relative;
 		top: 35.5px;
 	}
@@ -351,6 +359,10 @@ header {
 	outline: none;
 	cursor: pointer;
 	border-radius: 0px 0px 16px 16px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	position: fixed;
 	top: 100px;
 	right: 20px;
@@ -443,6 +455,10 @@ header {
 	border-radius: 15px;
 	box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
 	margin: 0px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	position: absolute;
 	top: 442px;
 }
@@ -518,6 +534,10 @@ footer {
 	color: black;
 	margin: 30px 0px;
 	padding: 0px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	position: absolute;
 	top: 0px;
 }
@@ -673,10 +693,67 @@ footer {
 		#trademarks_page span {
 			font-size: 48px;
 		}
+
 	#videoService_Frame {
 		height: 1200px;
 		top: 200px;
 	}
+
+	#videoService_Dimmer {
+		height: 1200px;
+	}
+
+	#videoService_Play {
+		width: 240px;
+		height: 160px;
+		background-size: 150px 150px;
+		left: calc(50% - 120px);
+		top: 550px;
+	}
+
+	#videoService_VProgBg, #videoService_VProg {
+		height: 20px;
+		border-radius: 20px;
+		top: 1120px;
+	}
+
+	#videoService_VProgPin {
+		width: 34px;
+		height: 34px;
+		outline: 2px solid black;
+		border: 10px solid white;
+		top: 1113.5px;
+	}
+
+	#videoService_VDur {
+		top: 1075px;
+	}
+
+	#videoService_DownloadBtn {
+		width: 380px;
+		height: 90px;
+		font-size: 48px;
+		top: 200px;
+	}
+		#videoService_DownloadBtn .material-symbols-outlined {
+			font-size: 50px;
+		}
+
+	#videoService_DldMenu {
+		width: 60%;
+		padding: 40px 0px;
+		left: 20%;
+	}
+
+		#videoService_DldMenu h3 {
+			font-size: 60px;
+			margin: 0px 0px 20px 0px;
+		}
+
+		#videoService_DldMenu li a {
+			font-size: 48px;
+			padding: 20px 0px;
+		}
 
 	footer {
 		height: 300px;
