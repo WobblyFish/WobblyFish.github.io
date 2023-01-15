@@ -312,6 +312,7 @@ header {
 	}
 
 #videoService_Frame {
+	display: none;
 	width: 100%;
 	height: 500px;
 	text-align: center;
@@ -319,6 +320,29 @@ header {
 	top: 100px;
 	left: 0px;
 }
+
+
+#videoService_VideoNotFound {
+	width: 100%;
+	height: 500px;
+	background: black;
+	position: absolute;
+	top: 100px;
+	left: 0px;
+}
+
+	#videoService_VideoNotFound h1 {
+		width: 100%;
+		font-size: 60px;
+		color: white;
+		text-align: center;
+		letter-spacing: 3px;
+		margin: 0px;
+		position: absolute;
+		top: calc(50% - 45px);
+		left: 0px;
+	}
+
 #videoService_Dimmer {
 	width: 100%;
 	height: 500px;
