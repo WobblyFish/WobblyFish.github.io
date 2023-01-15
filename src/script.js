@@ -3,6 +3,25 @@ if (document.URL.substr(0, 7) == "http://") {
 	window.open(wndNewURL, "_self");
 }
 
+var videoService_videoTags = [
+	["TEST", "Newt Wagon",
+		[					// Playable source videos (BELOW)
+			["wagon.mp4", "video/mp4"],
+		], [					// Downloadable videos (BELOW)
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+			["MP4", "Wagon.mp4"],
+		]
+	],
+];
+
 document.getElementById("js_error").style.display = "none";
 var menu_stat = false;
 var videoService_refRate = 100;
@@ -45,6 +64,28 @@ function pg_fload(nm) {
 			setTimeout(vidServIntvlFctn, videoService_refRate);
 		}
 		setTimeout(vidServIntvlFctn, videoService_refRate);
+		if (window.location.href.indexOf("#") > 0) {
+			var vHashStr = window.location.href.substr(window.location.href.indexOf("#") + 1).toUpperCase();
+			var vHashLoc = -1;
+			for (var i = 0; i < videoService_videoTags.length; i++) {
+				if (vHashStr == videoService_videoTags[i][0]) {
+					vHashLoc = i;
+					break;
+				}
+			}
+			if (vHashLoc >= 0) {
+				document.getElementById("videoService_DldMenu").innerHTML = "<h3>Download</h3>";
+				for (var r = 0; r < videoService_videoTags[i][3].length; r++) {
+					document.getElementById("videoService_DldMenu").innerHTML += "<li><a href=\"" + videoService_videoTags[i][3][r][1] + "\" target=\"_blank\" download>" + videoService_videoTags[i][3][r][0] + "</a></li>";
+				}
+				document.getElementsByTagName("title")[0].innerText = videoService_videoTags[i][1] + " (Video) | Newtimations";
+				document.getElementById("videoService_Video").innerHTML = "";
+				for (var c = 0; c < videoService_videoTags[i][2].length; c++) {
+					document.getElementById("videoService_Video").innerHTML += "<source src=\"" + videoService_videoTags[i][2][c][0] + "\" type=\"" + videoService_videoTags[i][2][c][1] + "\" />";
+				}
+				document.getElementById("videoService_Video").innerHTML += "Your browser does not support the video tag.";
+			}
+		}
 	}
 	setTimeout(function () {
 		if (nm == "main") {
@@ -112,6 +153,7 @@ function videoServiceDownloadMenu(b) {
 		videoServicePlay(false);
 		document.getElementById("videoService_DldDimmer").style.display = "block";
 		document.getElementById("videoService_DldMenu").style.display = "block";
+		document.getElementById("videoService_DldMenu").style.top = "calc(50% - " + (document.getElementById("videoService_DldMenu").offsetHeight / 2) + "px)";
 	}
 	else {
 		document.getElementById("videoService_DldDimmer").style.display = "none";
