@@ -39,6 +39,9 @@ function pg_fload(nm) {
 					videoService_refRate = 100;
 				}
 			}
+			else if (!videoService_isDraggingPin) {
+				document.getElementById("videoService_Play").style.backgroundImage = "url('/src/play.svg')";
+			}
 			setTimeout(vidServIntvlFctn, videoService_refRate);
 		}
 		setTimeout(vidServIntvlFctn, videoService_refRate);
