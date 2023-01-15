@@ -74,6 +74,7 @@ function pg_fload(nm) {
 				}
 			}
 			if (vHashLoc >= 0) {
+				document.getElementById("videoService_VideoNotFound").style.display = "none";
 				document.getElementById("videoService_Frame").style.display = "block";
 				document.getElementById("videoService_DldMenu").innerHTML = "<h3>Download</h3>";
 				for (var r = 0; r < videoService_videoTags[i][3].length; r++) {
