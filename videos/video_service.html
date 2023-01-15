@@ -26,12 +26,11 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
 	<link rel="stylesheet" href="/src/stylesheet.css" />
 </head>
-<body onload="pg_fload('videoService')">
+<body onload="pg_fload('videoService')" onmouseup="vProgPinDrag(false)" onmousemove="videoService_MouseMove(event)">
 	<header>
 		<span id="Head_Toggle" class="material-symbols-outlined" onclick="toggle_menu()">menu</span>
 		<a href="/"><img src="/src/Newt.svg" draggable="false" id="Header_Logo" /></a>
 		<ul id="hdr_ul">
-			<!--<li><a href="/licensing/">Licensing</a></li>-->
 			<li><a href="https://forms.google.com/" target="_blank">Contact <span class="material-symbols-outlined">arrow_outward</span></a></li>
 		</ul>
 	</header>
@@ -45,7 +44,7 @@
 		<button id="videoService_DownloadBtn" onclick="videoServiceDownloadMenu(true)"><span class="material-symbols-outlined">download</span> Download</button>
 		<div id="videoService_VProgBg"></div>
 		<div id="videoService_VProg"></div>
-		<div id="videoService_VProgPin"></div>
+		<div id="videoService_VProgPin" onmousedown="vProgPinDrag(true)"></div>
 		<h6 id="videoService_VDur">0:00 / 0:00</h6>
 	</div>
 	<div id="videoService_DldDimmer" onclick="videoServiceDownloadMenu(false)"></div>
