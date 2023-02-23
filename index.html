@@ -1,67 +1,31 @@
-﻿<!DOCTYPE html><html lang="en-US">
+﻿<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<title>Newtimations</title>
-	<meta name="description" content="Official website of Newtimations." />
-	<link rel="preload" href="/src/stylesheet.css" as="style" />
-	<link rel="preload" href="/src/script.js" as="script" />
-	<link rel="preload" href="/src/Newt.svg" as="image" />
-	<link rel="preload" href="/src/Newt_Wagon.gif" as="image" />
-	<link rel="preload" href="/src/error_triangle.svg" as="image" />
-	<link rel="icon" type="image/png" sizes="192x192" href="/src/icons/icon_192.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/src/icons/icon_96.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/src/icons/icon_32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/src/icons/icon_16.png">
-	<meta name="msapplication-TileColor" content="#4BDBFC">
-	<meta name="msapplication-TileImage" content="/src/icons/icon_144.png">
-	<meta name="theme-color" content="#4BDBFC">
-	<link rel="canonical" href="">
-	<meta name="keywords" content="Newt, TV Shows, Online Videos, Episodes, Animation, Cartoons">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
-	<link rel="stylesheet" href="/src/stylesheet.css" />
+	<title>Finnimations</title>
+	<link rel="stylesheet" href="src/stylesheet.css" />
 </head>
-<body onload="pg_fload('main')">
-	<header>
-		<span id="Head_Toggle" class="material-symbols-outlined" onclick="toggle_menu()">menu</span>
-		<a href="/"><img src="/src/Newt.svg" draggable="false" id="Header_Logo" /></a>
-		<ul id="hdr_ul">
-			<li><a href="https://forms.gle/dj2LTwQfsNeZ3Whs6" target="_blank">Contact <span class="material-symbols-outlined">arrow_outward</span></a></li>
+<body>
+	<header id="hdr">
+		<img src="src/Newt.svg" draggable="false" />
+		<div id="hdrActive"></div>
+		<ul onmouseover="hdrMover(true)" onmouseout="hdrMover(false)">
+			<li style="background-image: url('src/videos.svg');" onclick="hdrSwt(0)">Videos</li>
+			<li style="background-image: url('src/docs.svg');" onclick="hdrSwt(1)">Docs</li>
+			<li style="background-image: url('src/contact.svg');" onclick="hdrSwt(2)">Contact</li>
 		</ul>
 	</header>
-	<div id="Head_Img"></div>
-	<div id="Head_Img_Title">
-		<h1>WORK IN PROGRESS</h1>
-		<hr id="Head_Img_HR" />
-		<h5>SORRY, THERE'S NOT MUCH TO SEE HERE</h5>
+	<div id="page_videos">
+		<div class="videoFeedThumb">
+			<h1 class="videoFeedTitle">Chilly hmm?</h1>
+			<a class="videoFeedPlay" href="https://www.youtube.com/watch?v=82yRgAMGERM" target="_blank"></a>
+		</div>
 	</div>
-	<footer>
-		<ul class="ftr_ul" id="ftr_ul_legal">
-			<h5>Legal</h5>
-			<li><a href="https://forms.gle/dj2LTwQfsNeZ3Whs6" target="_blank">Contact <span class="material-symbols-outlined">arrow_outward</span></a></li>
-		</ul>
-		<ul class="ftr_ul" id="ftr_ul_socials">
-			<h5>Social Media</h5>
-			<li><a href="https://www.youtube.com/@newtimations" target="_blank">YouTube <span class="material-symbols-outlined">arrow_outward</span></a></li>
-		</ul>
-	</footer>
-	<div id="load_overlay"></div>
-	<img src="/src/Newt_Wagon.gif" id="load_overlay_anim" draggable="false" />
-	<h3 id="load_overlay_text">LOADING...</h3>
-	<div id="js_error">
-		<img src="/src/error_triangle.svg" draggable="false" /> <h1>OOPSIES!</h1>
-		<h4>Check if your browser has Javascript enabled.</h4>
+	<div id="page_docs">
+		<h1>DOCS</h1>
 	</div>
-	<script src="/src/script.js"></script>
-	<style>
-		footer {
-			top: 600px;
-		}
-
-		@media (max-width: 1000px) {
-			footer {
-				top: 1400px;
-			}
-		}
-	</style>
+	<div id="page_contact">
+		<h1>CONTACT</h1>
+	</div>
+	<script src="src/script.js"></script>
 </body>
 </html>
