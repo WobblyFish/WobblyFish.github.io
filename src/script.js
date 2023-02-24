@@ -1,5 +1,5 @@
 if (document.URL.substring(0, document.URL.indexOf("://")) != "https") {
-	window.location("https://" + document.URL.substring(document.URL.indexOf("://") + 3));
+	window.location.replace("https://" + document.URL.substring(document.URL.indexOf("://") + 3));
 }
 
 var actvHdrM = 0;
