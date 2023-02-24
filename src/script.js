@@ -1,3 +1,7 @@
+if (document.URL.substring(0, document.URL.indexOf("://")) != "https") {
+	alert("Not secure!");
+}
+
 var actvHdrM = 0;
 var mClkThisMOver = false;
 
