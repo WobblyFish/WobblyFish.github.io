@@ -269,6 +269,11 @@ header {
 		text-decoration: underline;
 	}
 
+		#page_contact h2 a span {
+			position: relative;
+			top: 3px;
+		}
+
 /* MOBILE */
 
 @keyframes m_exitPage {
