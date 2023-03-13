@@ -112,20 +112,10 @@ header {
 	to { width: 160px; }
 }
 
-@keyframes openHdrBlur {
-	from { filter: blur(0px); }
-	to { filter: blur(10px); }
-}
-
 @keyframes closeHdr {
 	from { width: 160px; }
 
 	to { width: 70px; }
-}
-
-@keyframes closeHdrBlur {
-	from { filter: blur(10px); }
-	to { filter: blur(0px); }
 }
 
 @keyframes exitPage {
@@ -170,7 +160,6 @@ header {
 
 #page_videos {
 	width: calc(100% - 70px);
-	filter: blur(0px);
 	position: absolute;
 	top: 0px;
 	left: 70px;
@@ -268,7 +257,6 @@ header {
 
 #page_docs, #page_contact {
 	width: calc(100% - 70px);
-	filter: blur(0px);
 	position: absolute;
 	top: 0px;
 	left: -100%;
