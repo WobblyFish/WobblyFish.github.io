@@ -253,6 +253,44 @@ header {
 	text-align: center;
 }
 
+.docsPg {
+	display: block;
+	width: 90%;
+	height: 40vh;
+	animation: 0.2s docsPgMOut 1;
+	background-position: center;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	border: 4px solid white;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 40px;
+	padding-top: 30vh;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	position: relative;
+	top: 10px;
+	left: 5%;
+}
+
+	.docsPg:hover {
+		animation: 0.2s docsPgMOver 1;
+		background-size: 120% auto;
+	}
+
+@keyframes docsPgMOver {
+	from { background-size: 100% auto; }
+	to { background-size: 120% auto; }
+}
+
+@keyframes docsPgMOut {
+	from { background-size: 120% auto; }
+	to { background-size: 100% auto; }
+}
+
 #page_contact h2 {
 	width: 300px;
 	color: white;
@@ -367,4 +405,12 @@ header {
 		font-size: 20px;
 		padding: 20% 15px 0px 15px;
 	}
+	.docsPg {
+		animation: none;
+		background-size: cover;
+	}
+		.docsPg:hover {
+			animation: none;
+			background-size: cover;
+		}
 }
