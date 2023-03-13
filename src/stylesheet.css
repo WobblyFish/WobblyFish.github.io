@@ -23,6 +23,25 @@ body {
 		background: #959595;
 	}
 
+#NotFoundPage {
+	width: 100%;
+	color: white;
+	text-align: center;
+	position: absolute;
+	top: calc(50% - 150px);
+	left: 0px;
+}
+
+	#NotFoundPage h1 {
+		font-size: 180px;
+		margin: 0px;
+	}
+
+	#NotFoundPage h5 {
+		font-size: 180px;
+		margin: 0px;
+	}
+
 header {
 	width: 70px;
 	height: 100%;
