@@ -17,20 +17,10 @@ function hdrMover(b) {
 			mClkThisMOver = false;
 			document.getElementById("hdr").style.animation = "0.25s openHdr 1";
 			document.getElementById("hdr").style.width = "160px";
-			for (var i = 0; i < pageArr.length; i++) {
-				document.getElementById("page_" + pageArr[i]).style.animation = "0.25s openHdrBlur 1";
-				document.getElementById("page_" + pageArr[i]).style.filter = "blur(10px)";
-			}
 		}
 		else {
 			document.getElementById("hdr").style.animation = "0.25s closeHdr 1";
 			document.getElementById("hdr").style.width = "70px";
-			for (var i = 0; i < pageArr.length; i++) {
-				if (!(actvHdrM == i && mClkThisMOver)) {
-					document.getElementById("page_" + pageArr[i]).style.animation = "0.25s closeHdrBlur 1";
-					document.getElementById("page_" + pageArr[i]).style.filter = "blur(0px)";
-				}
-			}
 		}
 	}
 }
