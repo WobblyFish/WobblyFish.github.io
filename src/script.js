@@ -45,9 +45,10 @@ function hdrSwt(n) {
 			document.getElementById("page_" + pageArr[actvHdrM]).style.left = "-100%";
 
 			document.getElementById("hdrActive").style.animation = "0.5s m_hdrSwt_" + actvHdrM + "_" + n + " 1";
-			if (n == 0) { document.getElementById("hdrActive").style.left = "80px"; }
-			else if (n == 1) { document.getElementById("hdrActive").style.left = "calc(33.33vw + 55px)"; }
-			else if (n == 2) { document.getElementById("hdrActive").style.left = "calc(66.66vw + 30px)"; }
+			if (n == 0) { document.getElementById("hdrActive").style.left = "56px"; }
+			else if (n == 1) { document.getElementById("hdrActive").style.left = "calc(25vw + 38px)"; }
+			else if (n == 2) { document.getElementById("hdrActive").style.left = "calc(50vw + 20px)"; }
+			else if (n == 3) { document.getElementById("hdrActive").style.left = "calc(75vw + 2px)"; }
 
 			document.getElementById("page_" + pageArr[n]).style.animation = "0.5s m_enterPage 1";
 			document.getElementById("page_" + pageArr[n]).style.left = "0px";
