@@ -455,6 +455,7 @@ header {
 			width: calc(25vw - 18px);
 			font-size: 20px;
 			padding: 25px 0px;
+			margin: 0px -1px;
 			text-align: center;
 			background-image: none !important;
 		}
