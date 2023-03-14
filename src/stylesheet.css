@@ -426,7 +426,7 @@ header {
 			font-size: 20px;
 			padding: 25px 0px;
 			text-align: center;
-			background-image: none;
+			background-image: none !important;
 		}
 	#page_videos, #page_docs, #page_legal, #page_contact {
 		width: 100%;
