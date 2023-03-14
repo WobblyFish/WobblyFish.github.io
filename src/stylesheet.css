@@ -92,6 +92,7 @@ header {
 
 		header ul li:nth-child(1) { background-image: url('videos.svg'); }
 		header ul li:nth-child(2) { background-image: url('docs.svg'); }
+		header ul li:nth-child(3) { background-image: url('legal.svg'); }
 		header ul li:nth-child(4) { background-image: url('contact.svg'); }
 
 		header ul li:hover {
@@ -138,6 +139,11 @@ header {
 	to { top: 250px; }
 }
 
+@keyframes hdrSwt_0_3 {
+	from { top: 110px; }
+	to { top: 320px; }
+}
+
 @keyframes hdrSwt_1_0 {
 	from { top: 180px; }
 	to { top: 110px; }
@@ -148,6 +154,11 @@ header {
 	to { top: 250px; }
 }
 
+@keyframes hdrSwt_1_3 {
+	from { top: 180px; }
+	to { top: 320px; }
+}
+
 @keyframes hdrSwt_2_0 {
 	from { top: 250px; }
 	to { top: 110px; }
@@ -156,6 +167,26 @@ header {
 @keyframes hdrSwt_2_1 {
 	from { top: 250px; }
 	to { top: 180px; }
+}
+
+@keyframes hdrSwt_2_3 {
+	from { top: 250px; }
+	to { top: 320px; }
+}
+
+@keyframes hdrSwt_3_0 {
+	from { top: 320px; }
+	to { top: 110px; }
+}
+
+@keyframes hdrSwt_3_1 {
+	from { top: 320px; }
+	to { top: 180px; }
+}
+
+@keyframes hdrSwt_3_2 {
+	from { top: 320px; }
+	to { top: 250px; }
 }
 
 #page_videos {
