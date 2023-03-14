@@ -286,14 +286,14 @@ header {
 		background-size: 110%;
 	}
 
-#page_docs, #page_contact {
+#page_docs, #page_legal, #page_contact {
 	width: calc(100% - 70px);
 	position: absolute;
 	top: 0px;
 	left: -100%;
 }
 
-#page_docs h1, #page_contact h1 {
+#page_docs h1, #page_legal h1, #page_contact h1 {
 	color: white;
 	text-align: center;
 }
