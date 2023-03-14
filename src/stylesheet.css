@@ -370,63 +370,63 @@ header {
 }
 
 @keyframes m_hdrSwt_0_1 {
-	from { left: 56px; }
-	to { left: calc(25vw + 38px); }
+	from { left: 53px; }
+	to { left: calc(25vw + 40px); }
 }
 
 @keyframes m_hdrSwt_0_2 {
-	from { left: 56px; }
-	to { left: calc(50vw + 20px); }
+	from { left: 53px; }
+	to { left: calc(50vw + 26px); }
 }
 
 @keyframes m_hdrSwt_0_3 {
-	from { left: 56px; }
-	to { left: calc(75vw + 2px); }
+	from { left: 53px; }
+	to { left: calc(75vw + 12px); }
 }
 
 @keyframes m_hdrSwt_1_0 {
-	from { left: calc(25vw + 38px); }
-	to { left: 56px; }
+	from { left: calc(25vw + 40px); }
+	to { left: 53px; }
 }
 
 @keyframes m_hdrSwt_1_2 {
-	from { left: calc(25vw + 38px); }
-	to { left: calc(50vw + 20px); }
+	from { left: calc(25vw + 40px); }
+	to { left: calc(50vw + 26px); }
 }
 
 @keyframes m_hdrSwt_1_3 {
-	from { left: calc(25vw + 38px); }
-	to { left: calc(75vw + 2px); }
+	from { left: calc(25vw + 40px); }
+	to { left: calc(75vw + 12px); }
 }
 
 @keyframes m_hdrSwt_2_0 {
-	from { left: calc(50vw + 20px); }
-	to { left: 56px; }
+	from { left: calc(50vw + 26px); }
+	to { left: 53px; }
 }
 
 @keyframes m_hdrSwt_2_1 {
-	from { left: calc(50vw + 20px); }
-	to { left: calc(25vw + 38px); }
+	from { left: calc(50vw + 26px); }
+	to { left: calc(25vw + 40px); }
 }
 
 @keyframes m_hdrSwt_2_3 {
-	from { left: calc(50vw + 20px); }
-	to { left: calc(75vw + 2px); }
+	from { left: calc(50vw + 26px); }
+	to { left: calc(75vw + 12px); }
 }
 
 @keyframes m_hdrSwt_3_0 {
-	from { left: calc(75vw + 2px); }
-	to { left: 56px; }
+	from { left: calc(75vw + 12px); }
+	to { left: 53px; }
 }
 
 @keyframes m_hdrSwt_3_1 {
-	from { left: calc(75vw + 2px); }
-	to { left: calc(25vw + 38px); }
+	from { left: calc(75vw + 12px); }
+	to { left: calc(25vw + 40px); }
 }
 
 @keyframes m_hdrSwt_3_2 {
-	from { left: calc(75vw + 2px); }
-	to { left: calc(50vw + 20px); }
+	from { left: calc(75vw + 12px); }
+	to { left: calc(50vw + 26px); }
 }
 
 @media (max-width: 1000px) {
@@ -441,9 +441,9 @@ header {
 		left: 8px;
 	}
 	#hdrActive {
-		width: calc(25vw - 18px);
+		width: calc(25vw - 12px);
 		top: 0px;
-		left: 56px;
+		left: 53px;
 	}
 	header ul {
 		width: calc(100% - 56px);
@@ -452,10 +452,10 @@ header {
 	}
 		header ul li {
 			display: inline-block;
-			width: calc(25vw - 18px);
+			width: calc(25vw - 12px);
 			font-size: 20px;
 			padding: 25px 0px;
-			margin: 0px -1px;
+			margin: 0px -3px;
 			text-align: center;
 			background-image: none !important;
 		}
