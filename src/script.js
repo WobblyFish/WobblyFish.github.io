@@ -8,6 +8,7 @@ var mClkThisMOver = false;
 var pageArr = [
 	"videos",
 	"docs",
+	"legal",
 	"contact",
 ];
 
