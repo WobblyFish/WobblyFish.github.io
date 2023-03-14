@@ -370,33 +370,63 @@ header {
 }
 
 @keyframes m_hdrSwt_0_1 {
-	from { left: 80px; }
-	to { left: calc(33.33vw + 55px); }
+	from { left: 56px; }
+	to { left: calc(25vw + 38px); }
 }
 
 @keyframes m_hdrSwt_0_2 {
-	from { left: 80px; }
-	to { left: calc(66.66vw + 30px); }
+	from { left: 56px; }
+	to { left: calc(50vw + 20px); }
+}
+
+@keyframes m_hdrSwt_0_3 {
+	from { left: 56px; }
+	to { left: calc(75vw + 2px); }
 }
 
 @keyframes m_hdrSwt_1_0 {
-	from { left: calc(33.33vw + 55px); }
-	to { left: 80px; }
+	from { left: calc(25vw + 38px); }
+	to { left: 56px; }
 }
 
 @keyframes m_hdrSwt_1_2 {
-	from { left: calc(33.33vw + 55px); }
-	to { left: calc(66.66vw + 30px); }
+	from { left: calc(25vw + 38px); }
+	to { left: calc(50vw + 20px); }
+}
+
+@keyframes m_hdrSwt_1_3 {
+	from { left: calc(25vw + 38px); }
+	to { left: calc(75vw + 2px); }
 }
 
 @keyframes m_hdrSwt_2_0 {
-	from { left: calc(66.66vw + 30px); }
-	to { left: 80px; }
+	from { left: calc(50vw + 20px); }
+	to { left: 56px; }
 }
 
 @keyframes m_hdrSwt_2_1 {
-	from { left: calc(66.66vw + 30px); }
-	to { left: calc(33.33vw + 55px); }
+	from { left: calc(50vw + 20px); }
+	to { left: calc(25vw + 38px); }
+}
+
+@keyframes m_hdrSwt_2_3 {
+	from { left: calc(50vw + 20px); }
+	to { left: calc(75vw + 2px); }
+}
+
+@keyframes m_hdrSwt_3_0 {
+	from { left: calc(75vw + 2px); }
+	to { left: 56px; }
+}
+
+@keyframes m_hdrSwt_3_1 {
+	from { left: calc(75vw + 2px); }
+	to { left: calc(25vw + 38px); }
+}
+
+@keyframes m_hdrSwt_3_2 {
+	from { left: calc(75vw + 2px); }
+	to { left: calc(50vw + 20px); }
 }
 
 @media (max-width: 1000px) {
