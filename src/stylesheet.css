@@ -365,21 +365,12 @@ header {
 	to { background-size: 100% auto; }
 }
 
-#page_contact p {
+#page_contact p, #page_contact h2 {
 	line-height: 1.5;
 	margin: 20px 0px;
 	width: calc(100% - 100px);
 	color: white;
 	font-size: 16px;
-	font-weight: normal;
-	position: relative;
-	left: 50px;
-}
-
-#page_contact h2 {
-	width: 300px;
-	color: white;
-	font-size: 24px;
 	font-weight: normal;
 	position: relative;
 	left: 50px;
