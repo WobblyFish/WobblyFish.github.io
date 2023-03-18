@@ -54,3 +54,7 @@ function hdrSwt(n) {
 		mClkThisMOver = true;
 	}
 }
+
+function close_welcome_notification() {
+	document.getElementById("page_coverall").style.display = "none";
+}
