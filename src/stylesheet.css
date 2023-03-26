@@ -368,14 +368,14 @@ header {
 #page_contact p, #page_contact h2 {
 	line-height: 1.5;
 	margin: 20px 0px;
-	width: calc(100% - 100px);
+	width: calc(100% - 80px);
 	color: white;
 	font-weight: normal;
 	position: relative;
-	left: 50px;
+	left: 40px;
 }
 #page_contact p { font-size: 16px; }
-#page_contact h2 { font-size: 24px; }
+#page_contact h2 { font-size: 22px; }
 
 	#page_contact h2 a {
 		color: cornflowerblue;
