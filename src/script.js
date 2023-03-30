@@ -11,11 +11,12 @@ var pageArr = [
 	"contact",
 ];
 
-document.getElementById("hdr").innerHTML = "<img src=\"/src/Finnimations_Icon.svg\" draggable=\"false\"><div id=\"hdrActive\"></div><ul onmouseover=\"hdrMover(true)\" onmouseout=\"hdrMover(false)\">";
+var vHdrInsS = "<img src=\"/src/Finnimations_Icon.svg\" draggable=\"false\"><div id=\"hdrActive\"></div><ul onmouseover=\"hdrMover(true)\" onmouseout=\"hdrMover(false)\">";
 for (var i = 0; i < pageArr.length; i++) {
-	document.getElementById("hdr").innerHTML += "<li onclick=\"hdrSwt(" + i + ")\">" + pageArr[i] + "</li>";
+	vHdrInsS += "<li onclick=\"hdrSwt(" + i + ")\">" + pageArr[i] + "</li>";
 }
-document.getElementById("hdr").innerHTML += "</ul>";
+vHdrInsS += "</ul>";
+document.getElementById("hdr").innerHTML = vHdrInsS;
 
 function hdrMover(b) {
 	if (screen.availWidth >= 1000) {
