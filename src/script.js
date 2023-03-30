@@ -17,6 +17,12 @@ for (var i = 0; i < pageArr.length; i++) {
 }
 vHdrInsS += "</ul>";
 document.getElementById("hdr").innerHTML = vHdrInsS;
+if (screen.availWidth < 1000) {
+	document.getElementById("hdrActive").style.width = "calc(" + (100 / pageArr.length) + "vw - " + (38 / pageArr.length) + "px)";
+	for (var i = 0; i < document.getElementsByClassName("hdrPgLi").length; i++) {
+		document.getElementsByClassName("hdrPgLi")[i].style.width = "calc(" + (100 / pageArr.length) + "vw - " + (38 / pageArr.length) + "px)";
+	}
+}
 
 function hdrMover(b) {
 	if (screen.availWidth >= 1000) {
