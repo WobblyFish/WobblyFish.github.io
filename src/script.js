@@ -31,7 +31,7 @@ if (screen.availWidth < 1000) {
 else {
 	for (var y = 0; y < pageArr.length; y++) {
 		for (var x = 0; x < pageArr.length; x++) {
-			if (x != y) { document.getElementById("ins_stylesheet").innerHTML += "@keyframes hdrSwt_" + x + "_" + y + " {from { top: " + ((x * 70) + 110) + "px; }to { top: " + ((x * 70) + 110) + "px; }}"; }
+			if (x != y) { document.getElementById("ins_stylesheet").innerHTML += "@keyframes hdrSwt_" + x + "_" + y + " {from { top: " + ((x * 70) + 110) + "px; }to { top: " + ((y * 70) + 110) + "px; }}"; }
 		}
 	}
 }
