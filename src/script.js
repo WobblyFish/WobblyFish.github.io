@@ -15,7 +15,7 @@ document.getElementById("hdr").innerHTML = "<img src=\"/src/Finnimations_Icon.sv
 for (var i = 0; i < pageArr.length; i++) {
 	document.getElementById("hdr").innerHTML += "<li onclick=\"hdrSwt(" + i + ")\">" + pageArr[i] + "</li>";
 }
-document.getElementById("hdr").innerHTML += "<\ul>";
+document.getElementById("hdr").innerHTML += "</ul>";
 
 function hdrMover(b) {
 	if (screen.availWidth >= 1000) {
