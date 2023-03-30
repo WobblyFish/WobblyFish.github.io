@@ -394,6 +394,8 @@ header {
 	.docsPg {
 		animation: none;
 		background-size: cover;
+		font-size: 32px;
+		padding-top: 32vh;
 	}
 		.docsPg:hover {
 			animation: none;
