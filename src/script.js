@@ -24,14 +24,14 @@ if (screen.availWidth < 1000) {
 	}
 	for (var y = 0; y < pageArr.length; y++) {
 		for (var x = 0; x < pageArr.length; x++) {
-			document.getElementById("ins_stylesheet").innerHTML += "@keyframes m_hdrSwt_" + x + "_" + y + " {from { left: calc(" + (x * (100 / pageArr.length)) + "vw + " + (54 - (x * (56 / pageArr.length))) + "px); }to { left: calc(" + (y * (100 / pageArr.length)) + "vw + " + (54 - (y * (56 / pageArr.length))) + "px); }}";
+			if (x != y) { document.getElementById("ins_stylesheet").innerHTML += "@keyframes m_hdrSwt_" + x + "_" + y + " {from { left: calc(" + (x * (100 / pageArr.length)) + "vw + " + (54 - (x * (56 / pageArr.length))) + "px); }to { left: calc(" + (y * (100 / pageArr.length)) + "vw + " + (54 - (y * (56 / pageArr.length))) + "px); }}"; }
 		}
 	}
 }
 else {
 	for (var y = 0; y < pageArr.length; y++) {
 		for (var x = 0; x < pageArr.length; x++) {
-			document.getElementById("ins_stylesheet").innerHTML += "@keyframes hdrSwt_" + x + "_" + y + " {from { left: " + ((x * 70) + 110) + "px; }to { left: " + ((x * 70) + 110) + "px; }}";
+			if (x != y) { document.getElementById("ins_stylesheet").innerHTML += "@keyframes hdrSwt_" + x + "_" + y + " {from { top: " + ((x * 70) + 110) + "px; }to { top: " + ((x * 70) + 110) + "px; }}"; }
 		}
 	}
 }
