@@ -28,6 +28,13 @@ if (screen.availWidth < 1000) {
 		}
 	}
 }
+else {
+	for (var y = 0; y < pageArr.length; y++) {
+		for (var x = 0; x < pageArr.length; x++) {
+			document.getElementById("ins_stylesheet").innerHTML += "@keyframes hdrSwt_" + x + "_" + y + " {from { left: " + ((x * 70) + 110) + "px; }to { left: " + ((x * 70) + 110) + "px; }}";
+		}
+	}
+}
 
 function hdrMover(b) {
 	if (screen.availWidth >= 1000) {
