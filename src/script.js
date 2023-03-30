@@ -58,7 +58,7 @@ function hdrSwt(n) {
 			document.getElementById("page_" + pageArr[actvHdrM].toLowerCase()).style.left = "-100%";
 
 			document.getElementById("hdrActive").style.animation = "0.5s m_hdrSwt_" + actvHdrM + "_" + n + " 1";
-			document.getElementById("hdrActive").style.left = "calc(" + (n * (100 / pageArr.length)) + "vw - " + (54 - (n * (56 / pageArr.length))) + "px)";
+			document.getElementById("hdrActive").style.left = "calc(" + (n * (100 / pageArr.length)) + "vw + " + (54 - (n * (56 / pageArr.length))) + "px)";
 
 			document.getElementById("page_" + pageArr[n].toLowerCase()).style.animation = "0.5s m_enterPage 1";
 			document.getElementById("page_" + pageArr[n].toLowerCase()).style.left = "0px";
