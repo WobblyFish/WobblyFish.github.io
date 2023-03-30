@@ -22,6 +22,11 @@ if (screen.availWidth < 1000) {
 	for (var i = 0; i < document.getElementsByClassName("hdrPgLi").length; i++) {
 		document.getElementsByClassName("hdrPgLi")[i].style.width = "calc(" + (100 / pageArr.length) + "vw - " + (38 / pageArr.length) + "px)";
 	}
+	for (var y = 0; y < pageArr.length; y++) {
+		for (var x = 0; x < pageArr.length; x++) {
+			document.getElementById("ins_stylesheet").innerHTML += "@keyframes m_hdrSwt_" + x + "_" + y + " {from { left: calc(" + (x * (100 / pageArr.length)) + "vw + " + (54 - (x * (56 / pageArr.length))) + "px); }to { left: calc(" + (y * (100 / pageArr.length)) + "vw + " + (54 - (y * (56 / pageArr.length))) + "px); }}";
+		}
+	}
 }
 
 function hdrMover(b) {
