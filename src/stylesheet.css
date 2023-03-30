@@ -485,7 +485,6 @@ header {
 	}
 		header ul li {
 			display: inline-block;
-			width: calc(25vw - 12px);
 			font-size: 20px;
 			padding: 25px 0px;
 			margin: 0px -3px;
