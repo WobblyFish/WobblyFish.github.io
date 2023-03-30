@@ -45,6 +45,13 @@
 			</p>
 		</div>
 	</div>
-	<script src="/src/script.js"></script>
+	<script src="/src/script.js">
+		if (screen.availWidth < 1000) {
+			document.getElementById("hdrActive").style.width = "calc(" + (100 / pageArr.length) + "vw - " + (56 / pageArr.length) + "px)";
+			for (var i = 0; i < document.getElementsByClassName("hdrPgLi").length; i++) {
+				document.getElementsByClassName("hdrPgLi")[i].style.width = "calc(" + (100 / pageArr.length) + "vw - " + (56 / pageArr.length) + "px);";
+			}
+		}
+	</script>
 </body>
 </html>
