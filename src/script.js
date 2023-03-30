@@ -13,7 +13,7 @@ var pageArr = [
 
 var vHdrInsS = "<img src=\"/src/Finnimations_Icon.svg\" draggable=\"false\"><div id=\"hdrActive\"></div><ul onmouseover=\"hdrMover(true)\" onmouseout=\"hdrMover(false)\">";
 for (var i = 0; i < pageArr.length; i++) {
-	vHdrInsS += "<li onclick=\"hdrSwt(" + i + ")\">" + pageArr[i] + "</li>";
+	vHdrInsS += "<li onclick=\"hdrSwt(" + i + ")\" style=\"background-image:url(\'/src/" + pageArr[i] + ".svg\')\">" + pageArr[i] + "</li>";
 }
 vHdrInsS += "</ul>";
 document.getElementById("hdr").innerHTML = vHdrInsS;
