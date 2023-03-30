@@ -35,26 +35,26 @@ function hdrMover(b) {
 function hdrSwt(n) {
 	if (actvHdrM != n) {
 		if (screen.availWidth >= 1000) { // Desktop
-			document.getElementById("page_" + pageArr[actvHdrM]).style.animation = "0.5s exitPage 1";
-			document.getElementById("page_" + pageArr[actvHdrM]).style.left = "-100%";
+			document.getElementById("page_" + pageArr[actvHdrM].toLowerCase()).style.animation = "0.5s exitPage 1";
+			document.getElementById("page_" + pageArr[actvHdrM].toLowerCase()).style.left = "-100%";
 			document.getElementById("hdr").style.animation = "0.25s closeHdr 1";
 			document.getElementById("hdr").style.width = "70px";
 
 			document.getElementById("hdrActive").style.animation = "0.5s hdrSwt_" + actvHdrM + "_" + n + " 1";
 			document.getElementById("hdrActive").style.top = (110 + (n * 70)) + "px";
 
-			document.getElementById("page_" + pageArr[n]).style.animation = "0.75s enterPage 1";
-			document.getElementById("page_" + pageArr[n]).style.left = "70px";
+			document.getElementById("page_" + pageArr[n].toLowerCase()).style.animation = "0.75s enterPage 1";
+			document.getElementById("page_" + pageArr[n].toLowerCase()).style.left = "70px";
 		}
 		else { // Mobile
-			document.getElementById("page_" + pageArr[actvHdrM]).style.animation = "0.5s m_exitPage 1";
-			document.getElementById("page_" + pageArr[actvHdrM]).style.left = "-100%";
+			document.getElementById("page_" + pageArr[actvHdrM].toLowerCase()).style.animation = "0.5s m_exitPage 1";
+			document.getElementById("page_" + pageArr[actvHdrM].toLowerCase()).style.left = "-100%";
 
 			document.getElementById("hdrActive").style.animation = "0.5s m_hdrSwt_" + actvHdrM + "_" + n + " 1";
 			document.getElementById("hdrActive").style.left = "calc(" + (n * 25) + "vw + " + (54 - (n * 14)) + "px)";
 
-			document.getElementById("page_" + pageArr[n]).style.animation = "0.5s m_enterPage 1";
-			document.getElementById("page_" + pageArr[n]).style.left = "0px";
+			document.getElementById("page_" + pageArr[n].toLowerCase()).style.animation = "0.5s m_enterPage 1";
+			document.getElementById("page_" + pageArr[n].toLowerCase()).style.left = "0px";
 		}
 		actvHdrM = n;
 		mClkThisMOver = true;
