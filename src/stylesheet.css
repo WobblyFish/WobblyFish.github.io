@@ -123,11 +123,6 @@ header {
 			color: white;
 		}
 
-		header ul li:nth-child(1) { background-image: url('videos.svg'); }
-		header ul li:nth-child(2) { background-image: url('docs.svg'); }
-		header ul li:nth-child(3) { background-image: url('legal.svg'); }
-		header ul li:nth-child(4) { background-image: url('contact.svg'); }
-
 		header ul li:hover {
 			background-color: rgba(255,255,255,0.2);
 		}
