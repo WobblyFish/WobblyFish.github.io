@@ -13,7 +13,7 @@ var pageArr = [
 
 var vHdrInsS = "<img src=\"/src/Finnimations_Icon.svg\" draggable=\"false\"><div id=\"hdrActive\"></div><ul onmouseover=\"hdrMover(true)\" onmouseout=\"hdrMover(false)\">";
 for (var i = 0; i < pageArr.length; i++) {
-	vHdrInsS += "<li onclick=\"hdrSwt(" + i + ")\" style=\"background-image:url(\'/src/" + pageArr[i].toLowerCase() + ".svg\')\">" + pageArr[i] + "</li>";
+	vHdrInsS += "<li onclick=\"hdrSwt(" + i + ")\" style=\"background-image:url(\'/src/" + pageArr[i].toLowerCase() + ".svg\');left: calc(" + (n * (100 / pageArr.length)) + "vw + " + (54 - (n * (56 / pageArr.length))) + "px);\">" + pageArr[i] + "</li>";
 }
 vHdrInsS += "</ul>";
 document.getElementById("hdr").innerHTML = vHdrInsS;
@@ -51,7 +51,7 @@ function hdrSwt(n) {
 			document.getElementById("page_" + pageArr[actvHdrM].toLowerCase()).style.left = "-100%";
 
 			document.getElementById("hdrActive").style.animation = "0.5s m_hdrSwt_" + actvHdrM + "_" + n + " 1";
-			document.getElementById("hdrActive").style.left = "calc(" + (n * 25) + "vw + " + (54 - (n * 14)) + "px)";
+			document.getElementById("hdrActive").style.left = "calc(" + (n * (100 / pageArr.length)) + "vw + " + (54 - (n * (56 / pageArr.length))) + "px)";
 
 			document.getElementById("page_" + pageArr[n].toLowerCase()).style.animation = "0.5s m_enterPage 1";
 			document.getElementById("page_" + pageArr[n].toLowerCase()).style.left = "0px";
