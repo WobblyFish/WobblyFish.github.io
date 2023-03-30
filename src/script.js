@@ -19,7 +19,7 @@ vHdrInsS += "</ul>";
 document.getElementById("hdr").innerHTML = vHdrInsS;
 
 if (screen.availWidth < 1000) {
-	document.getElementById("hdrActive").style.left = "calc(" + (n * (100 / pageArr.length)) + "vw + " + (54 - (n * (56 / pageArr.length))) + "px)";
+	document.getElementById("hdrActive").style.width = "calc(" + (100 / pageArr.length) + "vw + " + (56 / pageArr.length) + "px)";
 	for (var i = 0; i < pageArr.length; i++) {
 		document.getElementById(hdrPgLi_" + pageArr[i]).style.width = "calc(" + (i * (100 / pageArr.length)) + "vw + " + (54 - (i * (56 / pageArr.length))) + "px);";
 	}
