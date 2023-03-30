@@ -127,7 +127,8 @@
 	<style>
 		#ReturnHomepageBtn {
 			cursor: pointer;
-			width: 230px;
+			width: 270px;
+			box-sizing: border-box;
 			background-color: #6DBDFF;
 			border: 3px solid white;
 			border-radius: 40px;
@@ -206,6 +207,7 @@
 			background: white;
 			box-sizing: border-box;
 			border-bottom: 2px solid #001537;
+			font-size: 36px;
 			padding: 10px 30px;
 			margin: 0px;
 			cursor: pointer;
@@ -245,6 +247,33 @@
 					padding: 7px 12px;
 					line-height: 1.5;
 				}
+		@media (max-width: 1000px) {
+			#ReturnHomepageBtn {
+				width: 100%;
+				border-top: none;
+				border-bottom: 3px solid white;
+				border-left: none;
+				border-right: none;
+				padding: 15px 0px 15px 50px;
+				font-size: 24px;
+				text-align: center;
+				border-radius: 0px;
+				top: 0px;
+				left: 0px;
+			}
+			#ProductionDocsLst {
+				width: 100%;
+				top: 65px;
+				left: 0px;
+			}
+			.ProductionListItem {
+				width: calc(100% - 30px);
+				left: 15px;
+			}
+			.ProductionListItem_Title {
+				font-size: 24px;
+			}
+		}
 	</style>
 	<script>
 		function pgLoaded() {
