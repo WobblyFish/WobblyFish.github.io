@@ -1,4 +1,4 @@
-"allowed", "domain"
+"subdomains_allowed", "domain"
 "true", "cartoonnetwork.com.ar"
 "true", "brother.at"
 "true", "nestle.at"
