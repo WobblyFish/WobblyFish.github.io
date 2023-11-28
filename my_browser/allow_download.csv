@@ -1,3 +1,6 @@
 "Include Subdomains", "Domain"
 "false", "stock.adobe.com"
 "false", "chat.openai.com"
+"false", "www.google.com"
+"false", "drive.google.com"
+"false", "docs.google.com"
