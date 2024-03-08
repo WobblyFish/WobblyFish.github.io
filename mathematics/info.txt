@@ -1,2 +1,2 @@
-Primes: Up to 10 million
+Primes: Up to 25 million
 Factorials: Up to 0!
