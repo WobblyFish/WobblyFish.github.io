@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>AAC</title>
+</head>
+<body>
+	<svg viewBox="0 0 340 340" id="cGraph">
+	</svg>
+	<style>
+		#cGraph {
+			width: 340px;
+			height: 340px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+	<script>
+		const dblPI = Math.PI * 2;
+		const cGraph = document.getElementById("cGraph");
+		var MouseStatus = {
+			X: 0,
+			Y: 0,
+			LDown: false,
+			MDown: false,
+			RDown: false
+		};
+		document.onmousemove = (event) => {
+			MouseStatus.X = event.clientX;
+			MouseStatus.Y = event.clientY;
+		};
+		document.addEventListener("mousedown", (event) => {
+			if (event.button === 0) MouseStatus.LDown = true;
+			if (event.button === 1) MouseStatus.MDown = true;
+			if (event.button === 2) MouseStatus.RDown = true;
+		});
+		document.addEventListener("mouseup", (event) => {
+			if (event.button === 0) MouseStatus.LDown = false;
+			if (event.button === 1) MouseStatus.MDown = false;
+			if (event.button === 2) MouseStatus.RDown = false;
+		});
+		var dC = []; for (var i = 0; i < 10; i++) dC.push(0);
+		function genCGraph(res, rI, rO, cx, cy) {
+			const rN = dblPI / res / dC.length;
+			cGraph.innerHTML = "";
+			for (var i = 0; i < dC.length; i++) {
+				var cGraphD = "";
+				var iPnts = [];
+				var oPnts = [];
+				const rIn = (rI - (5 * dC[i]));
+				const rOn = (rO + (5 * dC[i]));
+				for (var n = 0; n <= res; n++) {
+					const theta = rN * (i * res + n);
+					iPnts.push({
+						x: Math.cos(theta) * rIn + cx,
+						y: Math.sin(theta) * rIn + cy
+					});
+					oPnts.push({
+						x: Math.cos(theta) * rOn + cx,
+						y: Math.sin(theta) * rOn + cy
+					});
+				}
+				cGraphD += "M " + oPnts[0].x.toString() + "," + oPnts[0].y.toString() + " L " + iPnts[0].x.toString() + "," + iPnts[0].y.toString();
+				for (var iPnt = 0; iPnt < iPnts.length; iPnt++) {
+					cGraphD += " L " + iPnts[iPnt].x.toString() + "," + iPnts[iPnt].y.toString();
+				}
+				for (var oPnt = oPnts.length - 1; oPnt > 0; oPnt--) {
+					cGraphD += " L " + oPnts[oPnt].x.toString() + "," + oPnts[oPnt].y.toString();
+				}
+				cGraphD += " Z";
+				cGraph.innerHTML += "\t\t<path fill=\"rgba(255,0,0," + ((dC[i] * 0.8) + 0.2).toString() + ")\" stroke=\"black\" stroke-width=\"1\" d=\"" + cGraphD + "\" />\n";
+				const mRP = {
+					X: MouseStatus.X - cx,
+					Y: MouseStatus.Y - cy
+				};
+				const mDist = Math.sqrt((mRP.X * mRP.X) + (mRP.Y * mRP.Y));
+				const cThetaA = rN * i * res;
+				const cThetaB = rN * (i + 1) * res;
+				const cXa = Math.acos(mRP.X / mDist);
+				if (
+					mDist >= rI &&
+					mDist <= rO &&
+					((mRP.Y <= 0 && dblPI - cXa >= cThetaA) || (mRP.Y > 0 && cXa >= cThetaA)) &&
+					((mRP.Y <= 0 && dblPI - cXa <= cThetaB) || (mRP.Y > 0 && cXa <= cThetaB))
+				) {
+					// Mouse is over section [i]
+					dC[i] = Math.max(0, Math.min(1, dC[i] + 0.1));
+				}
+				else {
+					// Mouse is not over section [i]
+					dC[i] = Math.max(0, Math.min(1, dC[i] - 0.1));
+				}
+			}
+		}
+		setInterval(() => {
+			genCGraph(5, 114, 160, 170, 170, 10);
+		}, 30);
+		// factorial() cannot accept numbers less than n=2
+		function factorial(n) {
+			var y = 2;
+			for (var x = 3; x <= n; x++) {
+				y *= x;
+			}
+			return y;
+		}
+		function uniqueCombos(n, k) {
+			return factorial(n) / (factorial(k) * factorial(n - k));
+		}
+	</script>
+</body>
+</html>
