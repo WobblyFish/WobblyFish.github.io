@@ -1,2 +1,0 @@
-Primes: Up to 25 million
-Factorials: Up to 0!
