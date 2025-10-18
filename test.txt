@@ -1,0 +1,14 @@
+# Comment
+# Hello world
+		
+
+User-agent: *
+Disallow: /example/
+Disallow: /block/*
+Allow: /good/*
+Allow: /hello/
+
+User-agent: TagInspector
+Allow: /
+
+Sitemap: https://wobblyfish.github.io/sitemap.txt
