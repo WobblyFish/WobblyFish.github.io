@@ -1,0 +1,193 @@
+<!DOCTYPE html><html>
+<head>
+	<meta charset="utf-8" />
+	<title>Dutch | Flashcards</title>
+</head>
+<body onload="bodyLoad()">
+	<canvas class="card" id="card1" onclick="flipCard()"></canvas>
+	<button class="moveB" id="previous" onclick="shiftCard(false)">&lArr;</button>
+	<button class="moveB" id="next" onclick="shiftCard(true)">&rArr;</button>
+	<style>
+		body {
+			background-color: #F6D18A;
+			margin: 0px;
+			font-family: Verdana;
+		}
+
+		.card {
+			background-color: white;
+			border-radius: 4px;
+			cursor: pointer;
+			position: fixed;
+		}
+
+		.moveB {
+			width: 100px;
+			background-color: #575B75;
+			color: #FFFFFF; /*#89DAF5*/
+			border: none;
+			border-radius: 4px;
+			font-size: 48px;
+			cursor: pointer;
+			position: fixed;
+		}
+
+		#previous {
+			display: none;
+		}
+	</style>
+	<script>
+		const qa = [
+			["A 3rd 90 degree bend may be permitted in a conduit run if the run does NOT exceed ___?", "10 meters"],
+			["When an electromagnetic field is built around a conductor, what property opposes any changes in current flow?", "Inductance"],
+			["What marking is used for non-conductive optical fiber general purpose cables?", "OFNG"],
+		];
+		var cardIndex = 0;
+
+		const cardDims = [0, 0, 0, 0, 0, 0, 0, 0, 50, 40];
+		// [0]:Width, [1]:Height, [2]:Center-Width, [3]:Center-Height, [4]:Left, [5]:Top, [6]:Font-Size, [7]:Line-Height, [8]:Padding-Horizontal, [9]:Padding-Vertical
+		const card1 = document.getElementById("card1");
+		const cardCtx1 = card1.getContext("2d");
+		const previous = document.getElementById("previous");
+		const next = document.getElementById("next");
+
+		var text1 = qa[cardIndex][0].split(' ');
+
+		function cardTextResize(ctx, txt) {
+			ctx.clearRect(0, 0, cardDims[0], cardDims[1]);
+			ctx.font = cardDims[6].toString() + "px Verdana";
+
+			var builder = txt[0];
+			var textLines = [];
+			var maxLineWidth = 0;
+			for (var a = 1; a < txt.length; a++) {
+				if (ctx.measureText(builder + ' ' + txt[a]).width >= (cardDims[0] - cardDims[8])) {
+					textLines.push(builder);
+					var builderW = ctx.measureText(builder).width;
+					if (builderW > maxLineWidth) {
+						maxLineWidth = builderW;
+					}
+					builder = txt[a];
+				}
+				else {
+					builder += ' ' + txt[a];
+				}
+			}
+			textLines.push(builder);
+			var builderW = ctx.measureText(builder).width;
+			if (builderW > maxLineWidth) {
+				maxLineWidth = builderW;
+			}
+			builder = "";
+
+			var textTop = (cardDims[1] - (textLines.length * cardDims[7])) / 2;
+			for (var b = 0; b < textLines.length; b++) {
+				ctx.fillText(textLines[b], cardDims[2], textTop);
+				textTop += cardDims[7];
+			}
+
+			// If (number of lines) * (line height) > (height) - (padding vertical)
+			// OR If (maximum line width) > (width) - (padding horizontal)
+			return ((textLines.length * cardDims[7] > cardDims[1] - cardDims[9]) || maxLineWidth > cardDims[0] - cardDims[8]);
+		}
+
+		function resizeCard() {
+			cardDims[0] = window.innerWidth / 2;
+			cardDims[1] = cardDims[0] * 3 / 5;
+			cardDims[2] = cardDims[0] / 2;
+			cardDims[3] = cardDims[1] / 2;
+			cardDims[4] = (window.innerWidth - cardDims[0]) / 2;
+			cardDims[5] = (window.innerHeight - cardDims[1]) / 2;
+			cardDims[6] = 120;
+			cardDims[7] = cardDims[6] * 1.2;
+
+			card1.width = cardDims[0];
+			card1.height = cardDims[1];
+			card1.style.left = cardDims[4].toString() + "px";
+			card1.style.top = cardDims[5].toString() + "px";
+
+			previous.style.height = cardDims[1].toString() + "px";
+			previous.style.left = (cardDims[4] - 140).toString() + "px";
+			previous.style.top = cardDims[5].toString() + "px";
+
+			next.style.height = cardDims[1] + "px";
+			next.style.left = (cardDims[4] + cardDims[0] + 40).toString() + "px";
+			next.style.top = cardDims[5].toString() + "px";
+
+			cardCtx1.textAlign = "center";
+			cardCtx1.textBaseline = "top";
+
+			while (cardTextResize(cardCtx1, text1)) {
+				cardDims[6] -= 12;
+				cardDims[7] = cardDims[6] * 1.2;
+			}
+		}
+
+		var cardFront = true;
+		var cardNotChanged = true;
+		function flipCard() {
+			var cardRot = 0;
+			var cardFlipAnim = setInterval(() => {
+				if (cardRot < 90) {
+					card1.style.transform = "rotateY(" + cardRot.toString() + "deg)";
+				}
+				else {
+					card1.style.transform = "rotateY(" + (90 - (cardRot % 90)).toString() + "deg)";
+
+					if (cardNotChanged && cardRot >= 90) {
+						if (cardFront) {
+							text1 = qa[cardIndex][1].split(' ');
+						}
+						else {
+							text1 = qa[cardIndex][0].split(' ');
+						}
+						cardFront = !cardFront;
+						cardNotChanged = false;
+						resizeCard();
+					}
+				}
+
+				if (cardRot >= 180) {
+					card1.style.transform = "none";
+					cardRot = 0;
+					cardNotChanged = true;
+					clearInterval(cardFlipAnim);
+				}
+				else {
+					cardRot += 17;
+				}
+			}, 17);
+		}
+
+		function shiftCard(isNext) {
+			if (isNext) {
+				cardIndex++;
+			}
+			else {
+				cardIndex--;
+            }
+            text1 = qa[cardIndex][0].split(' ');
+			cardFront = true;
+			resizeCard();
+
+			if (cardIndex == 0) {
+				previous.style.display = "none";
+			}
+			else {
+				previous.style.display = "block";
+			}
+
+			if (cardIndex == (qa.length - 1)) {
+				next.style.display = "none";
+			}
+			else {
+				next.style.display = "block";
+			}
+		}
+
+		function bodyLoad() {
+			resizeCard();
+			window.addEventListener("resize", resizeCard);
+		}
+	</script>
+</body></html>
