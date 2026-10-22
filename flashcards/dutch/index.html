@@ -1,200 +1,251 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
 	<meta charset="utf-8" />
-	<title>Dutch | Flashcards</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+	<title>English &lt;&gt; Dutch</title>
+	<meta name="description" content="" />
 </head>
-<body onload="bodyLoad()">
-	<canvas class="card" id="card1" onclick="flipCard()"></canvas>
-	<button class="moveB" id="previous" onclick="shiftCard(false)">&lArr;</button>
-	<button class="moveB" id="next" onclick="shiftCard(true)">&rArr;</button>
+<body>
+	<h1 id="word">[WORD]</h1>
+	<h6 id="part">[PART OF SPEECH]</h6>
+	<label id="label_1"><span id="label_span_1">Infinitive:</span> <input id="text_1" type="text" autocomplete="off" autocorrect="off" correct="tbd" /></label>
+	<label id="label_2"><span id="label_span_2">Past&nbsp;Tense:</span> <input id="text_2" type="text" autocomplete="off" autocorrect="off" correct="tbd" /></label>
+	<label id="label_3"><span id="label_span_3">Past&nbsp;Participle:</span> <input id="text_3" type="text" autocomplete="off" autocorrect="off" correct="tbd" /></label>
+	<button id="submit" onclick="submit()">CHECK</button>
 	<style>
 		body {
-			background-color: #F6D18A;
-			margin: 0px;
-			font-family: Verdana;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			letter-spacing: 1px;
+			margin: 0;
 		}
-
-		.card {
-			background-color: white;
-			border-radius: 4px;
+		#word {
+			width: 100%;
+			font-size: 36pt;
+			text-align: center;
+			position: fixed;
+			top: calc(50% - 220px);
+		}
+		#part {
+			width: 100%;
+			font-size: 10pt;
+			text-align: center;
+			position: fixed;
+			top: calc(50% - 140px);
+		}
+		label {
+			display: flex;
+			width: 100vw;
+			box-sizing: border-box;
+			font-size: 12pt;
+			padding: 0 25px;
+			position: fixed;
+			left: 0;
+		}
+		#label_1 {
+			top: calc(50% - 40px);
+		}
+		#label_2 {
+			top: calc(50% + 30px);
+		}
+		#label_3 {
+			top: calc(50% + 100px);
+		}
+		label span {
+			padding: 0 5px 0 0;
+			color: #A0A0A0;
+		}
+		input {
+			width: 100%;
+			outline: none;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			font-size: 12pt;
+			padding: 5px 6px;
+			border-top: none;
+			border-right: none;
+			border-bottom: 1px solid #000000;
+			border-left: none;
+			box-sizing: border-box;
+			position: relative;
+			top: -5px;
+		}
+		input:focus {
+			border-bottom: 2px solid #000000;
+		}
+		input[correct="no"] {
+			background-color: #FFDADA;
+			color: #760E0E;
+		}
+		#submit {
+			width: 160px;
+			outline: none;
+			background-color: #173590;
+			color: #FFFFFF;
+			border: 2px solid #0E3555;
+			border-radius: 15px;
+			font-size: 24pt;
+			padding: 10px 0;
 			cursor: pointer;
 			position: fixed;
+			top: calc(50% + 200px);
+			left: calc(50% - 80px);
 		}
-
-		.moveB {
-			width: 100px;
-			background-color: #575B75;
-			color: #FFFFFF; /*#89DAF5*/
-			border: none;
-			border-radius: 4px;
-			font-size: 48px;
-			cursor: pointer;
-			position: fixed;
+		@media screen and (width >= 700px) {
+			label {
+				width: 700px;
+				font-size: 16pt;
+				left: calc(50% - 350px);
+			}
+			label span {
+				padding: 0 10px 0 0;
+			}
+			input {
+				font-size: 16pt;
+			}
 		}
-
-		#previous {
-			display: none;
+		@media screen and (height >= 850px) {
+			#word {
+				font-size: 48pt;
+				top: calc(50% - 280px);
+			}
+			#part {
+				font-size: 12pt;
+				top: calc(50% - 170px);
+			}
 		}
 	</style>
 	<script>
-		const qa = [
-			["this morning", "vanmorgen"],
-			["as / because", "want"],
-			["something strange", "wat raars"],
-			["entirely", "helemaal"],
-			["to launch", "lanceren"],
-			["the (emergency) alarm", "de noodklok"],
-			["to whine", "zeiken"],
-			["the syllable", "de lettergreep"],
-			["the syllables", "de lettergrepen"],
-			["\"Better safe than sorry.\"", "Zeker voor het onzekere."],
+		const id_word = document.getElementById("word");
+		const id_part = document.getElementById("part");
+		const id_label_1 = document.getElementById("label_1");
+		const id_label_2 = document.getElementById("label_2");
+		const id_label_3 = document.getElementById("label_3");
+		const id_label_span_1 = document.getElementById("label_span_1");
+		const id_label_span_2 = document.getElementById("label_span_2");
+		const id_label_span_3 = document.getElementById("label_span_3");
+		const id_text_1 = document.getElementById("text_1");
+		const id_text_2 = document.getElementById("text_2");
+		const id_text_3 = document.getElementById("text_3");
+
+		const en_nl_words = [
+			{ part: "noun", en: "the syllable", si: "de lettergreep", pl: "lettergrepen", correct: 0, incorrect: 0 },
+			{ part: "indefinite pronoun", en: "sufficient; enough; plenty of", std: "voldoende", correct: 0, incorrect: 0 },
+			{ part: "verb", en: "to launch", inf: "lanceren", pt: "lanceerde", pp: "gelanceerd", correct: 0, incorrect: 0 },
+			{ part: "verb", en: "to whine", inf: "zeiken", pt: "zeikte", pp: "gezeikt", correct: 0, incorrect: 0 },
+			{ part: "verb", en: "to urinate; pee", inf: "zeiken", pt: "zeikte", pp: "gezeikt", correct: 0, incorrect: 0 },
+			{ part: "verb", en: "to pour (rain)", inf: "zeiken", pt: "zeikte", pp: "gezeikt", correct: 0, incorrect: 0 },
+			{ part: "adjective", en: "(het) strong", std: "sterk", comp: "sterker", super: "sterkst", correct: 0, incorrect: 0 },
+			{ part: "adjective", en: "(de) strong", std: "sterke", comp: "sterkere", super: "sterkste", correct: 0, incorrect: 0 },
 		];
-		var cardIndex = 0;
 
-		const cardDims = [0, 0, 0, 0, 0, 0, 0, 0, 50, 40];
-		// [0]:Width, [1]:Height, [2]:Center-Width, [3]:Center-Height, [4]:Left, [5]:Top, [6]:Font-Size, [7]:Line-Height, [8]:Padding-Horizontal, [9]:Padding-Vertical
-		const card1 = document.getElementById("card1");
-		const cardCtx1 = card1.getContext("2d");
-		const previous = document.getElementById("previous");
-		const next = document.getElementById("next");
-
-		var text1 = qa[cardIndex][0].split(' ');
-
-		function cardTextResize(ctx, txt) {
-			ctx.clearRect(0, 0, cardDims[0], cardDims[1]);
-			ctx.font = cardDims[6].toString() + "px Verdana";
-
-			var builder = txt[0];
-			var textLines = [];
-			var maxLineWidth = 0;
-			for (var a = 1; a < txt.length; a++) {
-				if (ctx.measureText(builder + ' ' + txt[a]).width >= (cardDims[0] - cardDims[8])) {
-					textLines.push(builder);
-					var builderW = ctx.measureText(builder).width;
-					if (builderW > maxLineWidth) {
-						maxLineWidth = builderW;
-					}
-					builder = txt[a];
-				}
-				else {
-					builder += ' ' + txt[a];
+		var wordIndex = 0;
+		function loadWord() {
+			while (en_nl_words.length > 1) {
+				var tempWordIndex = Math.floor(Math.random() * en_nl_words.length);
+				if (tempWordIndex != wordIndex) {
+					wordIndex = tempWordIndex;
+					break;
 				}
 			}
-			textLines.push(builder);
-			var builderW = ctx.measureText(builder).width;
-			if (builderW > maxLineWidth) {
-				maxLineWidth = builderW;
+			id_word.innerHTML = en_nl_words[wordIndex].en;
+			id_part.innerHTML = en_nl_words[wordIndex].part.toUpperCase();
+			id_text_1.value = "";
+			id_text_1.setAttribute("correct", "tbd");
+			id_text_2.value = "";
+			id_text_2.setAttribute("correct", "tbd");
+			id_text_3.value = "";
+			id_text_3.setAttribute("correct", "tbd");
+			if (en_nl_words[wordIndex].part == "noun") {
+				id_label_span_1.innerHTML = "Singular:";
+				id_label_2.style.display = "flex";
+				id_label_span_2.innerHTML = "Plural:";
+				id_label_3.style.display = "none";
 			}
-			builder = "";
-
-			var textTop = (cardDims[1] - (textLines.length * cardDims[7])) / 2;
-			for (var b = 0; b < textLines.length; b++) {
-				ctx.fillText(textLines[b], cardDims[2], textTop);
-				textTop += cardDims[7];
+			else if (en_nl_words[wordIndex].part == "indefinite pronoun") {
+				id_label_span_1.innerHTML = "Stated:";
+				id_label_2.style.display = "none";
+				id_label_3.style.display = "none";
 			}
-
-			// If (number of lines) * (line height) > (height) - (padding vertical)
-			// OR If (maximum line width) > (width) - (padding horizontal)
-			return ((textLines.length * cardDims[7] > cardDims[1] - cardDims[9]) || maxLineWidth > cardDims[0] - cardDims[8]);
-		}
-
-		function resizeCard() {
-			cardDims[0] = window.innerWidth / 2;
-			cardDims[1] = cardDims[0] * 3 / 5;
-			cardDims[2] = cardDims[0] / 2;
-			cardDims[3] = cardDims[1] / 2;
-			cardDims[4] = (window.innerWidth - cardDims[0]) / 2;
-			cardDims[5] = (window.innerHeight - cardDims[1]) / 2;
-			cardDims[6] = 120;
-			cardDims[7] = cardDims[6] * 1.2;
-
-			card1.width = cardDims[0];
-			card1.height = cardDims[1];
-			card1.style.left = cardDims[4].toString() + "px";
-			card1.style.top = cardDims[5].toString() + "px";
-
-			previous.style.height = cardDims[1].toString() + "px";
-			previous.style.left = (cardDims[4] - 140).toString() + "px";
-			previous.style.top = cardDims[5].toString() + "px";
-
-			next.style.height = cardDims[1] + "px";
-			next.style.left = (cardDims[4] + cardDims[0] + 40).toString() + "px";
-			next.style.top = cardDims[5].toString() + "px";
-
-			cardCtx1.textAlign = "center";
-			cardCtx1.textBaseline = "top";
-
-			while (cardTextResize(cardCtx1, text1)) {
-				cardDims[6] -= 12;
-				cardDims[7] = cardDims[6] * 1.2;
+			else if (en_nl_words[wordIndex].part == "verb") {
+				id_label_span_1.innerHTML = "Infinitive:";
+				id_label_2.style.display = "flex";
+				id_label_span_2.innerHTML = "Past&nbsp;Tense:";
+				id_label_3.style.display = "flex";
+				id_label_span_3.innerHTML = "Past&nbsp;Participle:";
 			}
-		}
-
-		var cardFront = true;
-		var cardNotChanged = true;
-		function flipCard() {
-			var cardRot = 0;
-			var cardFlipAnim = setInterval(() => {
-				if (cardRot < 90) {
-					card1.style.transform = "rotateY(" + cardRot.toString() + "deg)";
-				}
-				else {
-					card1.style.transform = "rotateY(" + (90 - (cardRot % 90)).toString() + "deg)";
-
-					if (cardNotChanged && cardRot >= 90) {
-						if (cardFront) {
-							text1 = qa[cardIndex][1].split(' ');
-						}
-						else {
-							text1 = qa[cardIndex][0].split(' ');
-						}
-						cardFront = !cardFront;
-						cardNotChanged = false;
-						resizeCard();
-					}
-				}
-
-				if (cardRot >= 180) {
-					card1.style.transform = "none";
-					cardRot = 0;
-					cardNotChanged = true;
-					clearInterval(cardFlipAnim);
-				}
-				else {
-					cardRot += 17;
-				}
-			}, 17);
-		}
-
-		function shiftCard(isNext) {
-			if (isNext) {
-				cardIndex++;
+			else if (en_nl_words[wordIndex].part == "adjective") {
+				id_label_span_1.innerHTML = "Stated:";
+				id_label_2.style.display = "flex";
+				id_label_span_2.innerHTML = "Comparative:";
+				id_label_3.style.display = "flex";
+				id_label_span_3.innerHTML = "Superlative:";
 			}
 			else {
-				cardIndex--;
-            }
-            text1 = qa[cardIndex][0].split(' ');
-			cardFront = true;
-			resizeCard();
-
-			if (cardIndex == 0) {
-				previous.style.display = "none";
-			}
-			else {
-				previous.style.display = "block";
-			}
-
-			if (cardIndex == (qa.length - 1)) {
-				next.style.display = "none";
-			}
-			else {
-				next.style.display = "block";
+				console.log("ERROR [1]: loadWord()");
 			}
 		}
+		loadWord();
 
-		function bodyLoad() {
-			resizeCard();
-			window.addEventListener("resize", resizeCard);
+		function submit() {
+			if (en_nl_words[wordIndex].part == "noun") {
+				if (
+					id_text_1.value == en_nl_words[wordIndex].si &&
+					id_text_2.value == en_nl_words[wordIndex].pl
+				) {
+					en_nl_words[wordIndex].correct++;
+					loadWord();
+				}
+				else {
+					en_nl_words[wordIndex].incorrect++;
+					id_text_1.setAttribute("correct", (id_text_1.value == en_nl_words[wordIndex].si ? "yes" : "no"));
+					id_text_2.setAttribute("correct", (id_text_2.value == en_nl_words[wordIndex].pl ? "yes" : "no"));
+				}
+			}
+			else if (en_nl_words[wordIndex].part == "indefinite pronoun") {
+				if (id_text_1.value == en_nl_words[wordIndex].std) {
+					en_nl_words[wordIndex].correct++;
+					loadWord();
+				}
+				else {
+					en_nl_words[wordIndex].incorrect++;
+					id_text_1.setAttribute("correct", "no");
+				}
+			}
+			else if (en_nl_words[wordIndex].part == "verb") {
+				if (
+					id_text_1.value == en_nl_words[wordIndex].inf &&
+					id_text_2.value == en_nl_words[wordIndex].pt &&
+					id_text_3.value == en_nl_words[wordIndex].pp
+				) {
+					en_nl_words[wordIndex].correct++;
+					loadWord();
+				}
+				else {
+					en_nl_words[wordIndex].incorrect++;
+					id_text_1.setAttribute("correct", (id_text_1.value == en_nl_words[wordIndex].inf ? "yes" : "no"));
+					id_text_2.setAttribute("correct", (id_text_2.value == en_nl_words[wordIndex].pt ? "yes" : "no"));
+					id_text_3.setAttribute("correct", (id_text_3.value == en_nl_words[wordIndex].pp ? "yes" : "no"));
+				}
+			}
+			else if (en_nl_words[wordIndex].part == "adjective") {
+				if (
+					id_text_1.value == en_nl_words[wordIndex].std &&
+					id_text_2.value == en_nl_words[wordIndex].comp &&
+					id_text_3.value == en_nl_words[wordIndex].super
+				) {
+					en_nl_words[wordIndex].correct++;
+					loadWord();
+				}
+				else {
+					en_nl_words[wordIndex].incorrect++;
+					id_text_1.setAttribute("correct", (id_text_1.value == en_nl_words[wordIndex].std ? "yes" : "no"));
+					id_text_2.setAttribute("correct", (id_text_2.value == en_nl_words[wordIndex].comp ? "yes" : "no"));
+					id_text_3.setAttribute("correct", (id_text_3.value == en_nl_words[wordIndex].super ? "yes" : "no"));
+				}
+			}
+			else {
+				console.log("ERROR [1]: submit()");
+			}
 		}
 	</script>
 </body></html>
