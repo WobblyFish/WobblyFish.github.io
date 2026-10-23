@@ -9,9 +9,9 @@
 <body>
 	<h1 id="word">[WORD]</h1>
 	<h6 id="part">[PART OF SPEECH]</h6>
-	<label id="label_1"><span id="label_span_1">Infinitive:</span> <input id="text_1" type="text" autocomplete="off" autocorrect="off" correct="tbd" /></label>
-	<label id="label_2"><span id="label_span_2">Past&nbsp;Tense:</span> <input id="text_2" type="text" autocomplete="off" autocorrect="off" correct="tbd" /></label>
-	<label id="label_3"><span id="label_span_3">Past&nbsp;Participle:</span> <input id="text_3" type="text" autocomplete="off" autocorrect="off" correct="tbd" /></label>
+	<label id="label_1"><span id="label_span_1">Infinitive:</span> <input id="text_1" type="text" autocomplete="off" autocorrect="off" correct="tbd" placeholder="" /><button id="hint_1" onclick="hint(0)">Show hint</button></label>
+	<label id="label_2"><span id="label_span_2">Past&nbsp;Tense:</span> <input id="text_2" type="text" autocomplete="off" autocorrect="off" correct="tbd" placeholder="" /><button id="hint_2" onclick="hint(1)">Show hint</button></label>
+	<label id="label_3"><span id="label_span_3">Past&nbsp;Participle:</span> <input id="text_3" type="text" autocomplete="off" autocorrect="off" correct="tbd" placeholder="" /><button id="hint_3" onclick="hint(2)">Show hint</button></label>
 	<button id="submit" onclick="submit()">CHECK</button>
 	<style>
 		body {
@@ -74,6 +74,24 @@
 			background-color: #FFDADA;
 			color: #760E0E;
 		}
+		label button {
+			outline: none;
+			width: 40px;
+			height: 40px;
+			padding: 0 20px;
+			margin: 0;
+			text-indent: -9999px;
+			cursor: pointer;
+			border: none;
+			border-radius: 0;
+			background-color: rgba(0,0,0,0);
+			background-image: url('src/hint.png');
+			background-size: 40px 40px;
+			background-position: center;
+			background-repeat: no-repeat;
+			position: relative;
+			top: -5px;
+		}
 		#submit {
 			width: 160px;
 			outline: none;
@@ -124,9 +142,12 @@
 		const id_text_1 = document.getElementById("text_1");
 		const id_text_2 = document.getElementById("text_2");
 		const id_text_3 = document.getElementById("text_3");
+		const id_hint_1 = document.getElementById("hint_1");
+		const id_hint_2 = document.getElementById("hint_2");
+		const id_hint_3 = document.getElementById("hint_3");
 
 		const en_nl_words = [
-			{ part: "phrase", en: "\"Better safe than sorry\"", phrase: "Het zekere voor het onzekere", correct: 0, incorrect: 0 },
+			{ part: "phrase", en: "\"Better safe than sorry\"", phrase: "het zekere voor het onzekere", correct: 0, incorrect: 0 },
 			{ part: "noun", en: "the syllable", si: "de lettergreep", pl: "lettergrepen", correct: 0, incorrect: 0 },
 			{ part: "noun", en: "the debt", si: "de schuld", pl: "schulden", correct: 0, incorrect: 0 },
 			{ part: "noun", en: "the gnome", si: "de kabouter", pl: "kabouters", correct: 0, incorrect: 0 },
@@ -149,12 +170,22 @@
 			}
 			id_word.innerHTML = en_nl_words[wordIndex].en;
 			id_part.innerHTML = en_nl_words[wordIndex].part.toUpperCase();
+
 			id_text_1.value = "";
+			id_text_1.setAttribute("placeholder", "");
 			id_text_1.setAttribute("correct", "tbd");
+			id_hint_1.innerHTML = "Show hint";
+
 			id_text_2.value = "";
+			id_text_2.setAttribute("placeholder", "");
 			id_text_2.setAttribute("correct", "tbd");
+			id_hint_2.innerHTML = "Show hint";
+
 			id_text_3.value = "";
+			id_text_3.setAttribute("placeholder", "");
 			id_text_3.setAttribute("correct", "tbd");
+			id_hint_3.innerHTML = "Show hint";
+
 			if (en_nl_words[wordIndex].part == "phrase") {
 				id_label_span_1.innerHTML = "Phrase:";
 				id_label_2.style.display = "none";
@@ -189,9 +220,61 @@
 		}
 		loadWord();
 
+		function hint(x) { 
+			if (x == 0) {
+				id_text_1.value = "";
+				if (en_nl_words[wordIndex].part == "phrase") {
+					id_text_1.setAttribute("placeholder", en_nl_words[wordIndex].phrase);
+					id_hint_1.innerHTML = en_nl_words[wordIndex].phrase;
+				}
+				else if (en_nl_words[wordIndex].part == "noun") {
+					id_text_1.setAttribute("placeholder", en_nl_words[wordIndex].si);
+					id_hint_1.innerHTML = en_nl_words[wordIndex].si;
+				}
+				else if (en_nl_words[wordIndex].part == "indefinite pronoun") {
+					id_text_1.setAttribute("placeholder", en_nl_words[wordIndex].std);
+					id_hint_1.innerHTML = en_nl_words[wordIndex].std;
+				}
+				else if (en_nl_words[wordIndex].part == "verb") {
+					id_text_1.setAttribute("placeholder", en_nl_words[wordIndex].inf);
+					id_hint_1.innerHTML = en_nl_words[wordIndex].inf;
+				}
+				else if (en_nl_words[wordIndex].part == "adjective") {
+					id_text_1.setAttribute("placeholder", en_nl_words[wordIndex].std);
+					id_hint_1.innerHTML = en_nl_words[wordIndex].std;
+				}
+			}
+			else if (x == 1) {
+				id_text_2.value = "";
+				if (en_nl_words[wordIndex].part == "noun") {
+					id_text_2.setAttribute("placeholder", en_nl_words[wordIndex].pl);
+					id_hint_2.innerHTML = en_nl_words[wordIndex].pl;
+				}
+				else if (en_nl_words[wordIndex].part == "verb") {
+					id_text_2.setAttribute("placeholder", en_nl_words[wordIndex].pt);
+					id_hint_2.innerHTML = en_nl_words[wordIndex].pt;
+				}
+				else if (en_nl_words[wordIndex].part == "adjective") {
+					id_text_2.setAttribute("placeholder", en_nl_words[wordIndex].comp);
+					id_hint_2.innerHTML = en_nl_words[wordIndex].comp;
+				}
+			}
+			else if (x == 2) {
+				id_text_3.value = "";
+				if (en_nl_words[wordIndex].part == "verb") {
+					id_text_3.setAttribute("placeholder", en_nl_words[wordIndex].pp);
+					id_hint_3.innerHTML = en_nl_words[wordIndex].pp;
+				}
+				else if (en_nl_words[wordIndex].part == "adjective") {
+					id_text_3.setAttribute("placeholder", en_nl_words[wordIndex].super);
+					id_hint_3.innerHTML = en_nl_words[wordIndex].super;
+				}
+			}
+		}
+
 		function submit() {
 			if (en_nl_words[wordIndex].part == "phrase") {
-				if (id_text_1.value == en_nl_words[wordIndex].phrase) {
+				if (id_text_1.value.toLowerCase() == en_nl_words[wordIndex].phrase.toLowerCase()) {
 					en_nl_words[wordIndex].correct++;
 					loadWord();
 				}
@@ -202,8 +285,8 @@
 			}
 			else if (en_nl_words[wordIndex].part == "noun") {
 				if (
-					id_text_1.value == en_nl_words[wordIndex].si &&
-					id_text_2.value == en_nl_words[wordIndex].pl
+					id_text_1.value.toLowerCase() == en_nl_words[wordIndex].si.toLowerCase() &&
+					id_text_2.value.toLowerCase() == en_nl_words[wordIndex].pl.toLowerCase()
 				) {
 					en_nl_words[wordIndex].correct++;
 					loadWord();
@@ -215,7 +298,7 @@
 				}
 			}
 			else if (en_nl_words[wordIndex].part == "indefinite pronoun") {
-				if (id_text_1.value == en_nl_words[wordIndex].std) {
+				if (id_text_1.value.toLowerCase() == en_nl_words[wordIndex].std.toLowerCase()) {
 					en_nl_words[wordIndex].correct++;
 					loadWord();
 				}
@@ -226,9 +309,9 @@
 			}
 			else if (en_nl_words[wordIndex].part == "verb") {
 				if (
-					id_text_1.value == en_nl_words[wordIndex].inf &&
-					id_text_2.value == en_nl_words[wordIndex].pt &&
-					id_text_3.value == en_nl_words[wordIndex].pp
+					id_text_1.value.toLowerCase() == en_nl_words[wordIndex].inf.toLowerCase() &&
+					id_text_2.value.toLowerCase() == en_nl_words[wordIndex].pt.toLowerCase() &&
+					id_text_3.value.toLowerCase() == en_nl_words[wordIndex].pp.toLowerCase()
 				) {
 					en_nl_words[wordIndex].correct++;
 					loadWord();
@@ -242,9 +325,9 @@
 			}
 			else if (en_nl_words[wordIndex].part == "adjective") {
 				if (
-					id_text_1.value == en_nl_words[wordIndex].std &&
-					id_text_2.value == en_nl_words[wordIndex].comp &&
-					id_text_3.value == en_nl_words[wordIndex].super
+					id_text_1.value.toLowerCase() == en_nl_words[wordIndex].std.toLowerCase() &&
+					id_text_2.value.toLowerCase() == en_nl_words[wordIndex].comp.toLowerCase() &&
+					id_text_3.value.toLowerCase() == en_nl_words[wordIndex].super.toLowerCase()
 				) {
 					en_nl_words[wordIndex].correct++;
 					loadWord();
