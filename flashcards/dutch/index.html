@@ -36,7 +36,7 @@
 			padding: 0;
 			margin: 0;
 			position: absolute;
-			top: 140px;
+			top: 150px;
 		}
 		label {
 			display: flex;
@@ -48,9 +48,9 @@
 			position: absolute;
 			left: 0;
 		}
-		#label_1 { top: 180px; }
-		#label_2 { top: 240px; }
-		#label_3 { top: 300px; }
+		#label_1 { top: 200px; }
+		#label_2 { top: 260px; }
+		#label_3 { top: 320px; }
 		label span {
 			padding: 0 5px 0 0;
 			color: #A0A0A0;
@@ -75,18 +75,18 @@
 			color: #760E0E;
 		}
 		#submit {
-			width: 100%;
+			width: 160px;
 			outline: none;
 			background-color: #173590;
 			color: #FFFFFF;
 			border: 2px solid #0E3555;
-			border-radius: 0;
+			border-radius: 15px;
 			font-size: 24pt;
 			padding: 10px 0;
 			cursor: pointer;
-			position: fixed;
-			bottom: 0;
-			left: 0;
+			position: absolute;
+			top: 380px;
+			left: calc(50% - 80px);
 		}
 		@media screen and (width >= 700px) {
 			label {
@@ -106,12 +106,11 @@
 				font-size: 12pt;
 				top: calc(50% - 170px);
 			}
+			#label_1 { top: calc(50% - 40px); }
+			#label_2 { top: calc(50% + 30px); }
+			#label_3 { top: calc(50% + 100px); }
 			#submit {
-				width: 160px;
-				border-radius: 15px;
-				position: absolute;
 				top: calc(50% + 200px);
-				left: calc(50% - 80px);
 			}
 		}
 	</style>
