@@ -128,12 +128,16 @@
 		const id_text_3 = document.getElementById("text_3");
 
 		const en_nl_words = [
+			{ part: "phrase", en: "\"Better safe than sorry\"", phrase: "Hey zekere voor het onzekere", correct: 0, incorrect: 0 },
 			{ part: "noun", en: "the syllable", si: "de lettergreep", pl: "lettergrepen", correct: 0, incorrect: 0 },
+			{ part: "noun", en: "the debt", si: "de schuld", pl: "schulden", correct: 0, incorrect: 0 },
+			{ part: "noun", en: "the gnome", si: "de kabouter", pl: "kabouters", correct: 0, incorrect: 0 },
 			{ part: "indefinite pronoun", en: "sufficient; enough; plenty of", std: "voldoende", correct: 0, incorrect: 0 },
 			{ part: "verb", en: "to launch", inf: "lanceren", pt: "lanceerde", pp: "gelanceerd", correct: 0, incorrect: 0 },
 			{ part: "verb", en: "to whine", inf: "zeiken", pt: "zeikte", pp: "gezeikt", correct: 0, incorrect: 0 },
 			{ part: "verb", en: "to urinate; pee", inf: "zeiken", pt: "zeikte", pp: "gezeikt", correct: 0, incorrect: 0 },
 			{ part: "verb", en: "to pour (rain)", inf: "zeiken", pt: "zeikte", pp: "gezeikt", correct: 0, incorrect: 0 },
+			{ part: "verb", en: "to destroy", inf: "vernielen", pt: "vernielde", pp: "vernield", correct: 0, incorrect: 0 },
 			{ part: "adjective", en: "(het) strong", std: "sterk", comp: "sterker", super: "sterkst", correct: 0, incorrect: 0 },
 			{ part: "adjective", en: "(de) strong", std: "sterke", comp: "sterkere", super: "sterkste", correct: 0, incorrect: 0 },
 		];
@@ -155,7 +159,12 @@
 			id_text_2.setAttribute("correct", "tbd");
 			id_text_3.value = "";
 			id_text_3.setAttribute("correct", "tbd");
-			if (en_nl_words[wordIndex].part == "noun") {
+			if (en_nl_words[wordIndex].part == "phrase") {
+				id_label_span_1.innerHTML = "Phrase:";
+				id_label_2.style.display = "none";
+				id_label_3.style.display = "none";
+			}
+			else if (en_nl_words[wordIndex].part == "noun") {
 				id_label_span_1.innerHTML = "Singular:";
 				id_label_2.style.display = "flex";
 				id_label_span_2.innerHTML = "Plural:";
@@ -187,7 +196,17 @@
 		loadWord();
 
 		function submit() {
-			if (en_nl_words[wordIndex].part == "noun") {
+			if (en_nl_words[wordIndex].part == "phrase") {
+				if (id_text_1.value == en_nl_words[wordIndex].phrase) {
+					en_nl_words[wordIndex].correct++;
+					loadWord();
+				}
+				else {
+					en_nl_words[wordIndex].incorrect++;
+					id_text_1.setAttribute("correct", "no");
+				}
+			}
+			else if (en_nl_words[wordIndex].part == "noun") {
 				if (
 					id_text_1.value == en_nl_words[wordIndex].si &&
 					id_text_2.value == en_nl_words[wordIndex].pl
