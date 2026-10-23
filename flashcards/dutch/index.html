@@ -23,15 +23,20 @@
 			width: 100%;
 			font-size: 24pt;
 			text-align: center;
-			position: fixed;
-			top: calc(50% - 220px);
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			top: 100px;
 		}
 		#part {
 			width: 100%;
-			font-size: 10pt;
+			font-size: 8pt;
+			color: #5A5A5A;
 			text-align: center;
-			position: fixed;
-			top: calc(50% - 140px);
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			top: 140px;
 		}
 		label {
 			display: flex;
@@ -39,18 +44,13 @@
 			box-sizing: border-box;
 			font-size: 12pt;
 			padding: 0 25px;
-			position: fixed;
+			margin: 0;
+			position: absolute;
 			left: 0;
 		}
-		#label_1 {
-			top: calc(50% - 40px);
-		}
-		#label_2 {
-			top: calc(50% + 30px);
-		}
-		#label_3 {
-			top: calc(50% + 100px);
-		}
+		#label_1 { top: 180px; }
+		#label_2 { top: 240px; }
+		#label_3 { top: 300px; }
 		label span {
 			padding: 0 5px 0 0;
 			color: #A0A0A0;
@@ -69,26 +69,24 @@
 			position: relative;
 			top: -5px;
 		}
-		input:focus {
-			border-bottom: 2px solid #000000;
-		}
+		input:focus { border-bottom: 2px solid #000000; }
 		input[correct="no"] {
 			background-color: #FFDADA;
 			color: #760E0E;
 		}
 		#submit {
-			width: 160px;
+			width: 100%;
 			outline: none;
 			background-color: #173590;
 			color: #FFFFFF;
 			border: 2px solid #0E3555;
-			border-radius: 15px;
+			border-radius: 0;
 			font-size: 24pt;
 			padding: 10px 0;
 			cursor: pointer;
 			position: fixed;
-			top: calc(50% + 200px);
-			left: calc(50% - 80px);
+			bottom: 0;
+			left: 0;
 		}
 		@media screen and (width >= 700px) {
 			label {
@@ -96,12 +94,8 @@
 				font-size: 16pt;
 				left: calc(50% - 350px);
 			}
-			label span {
-				padding: 0 10px 0 0;
-			}
-			input {
-				font-size: 16pt;
-			}
+			label span { padding: 0 10px 0 0; }
+			input { font-size: 16pt; }
 		}
 		@media screen and (height >= 850px) {
 			#word {
@@ -111,6 +105,13 @@
 			#part {
 				font-size: 12pt;
 				top: calc(50% - 170px);
+			}
+			#submit {
+				width: 160px;
+				border-radius: 15px;
+				position: absolute;
+				top: calc(50% + 200px);
+				left: calc(50% - 80px);
 			}
 		}
 	</style>
@@ -187,9 +188,7 @@
 				id_label_3.style.display = "flex";
 				id_label_span_3.innerHTML = "Superlative:";
 			}
-			else {
-				console.log("ERROR [1]: loadWord()");
-			}
+			else { console.log("ERROR [1]: loadWord()"); }
 		}
 		loadWord();
 
@@ -260,9 +259,7 @@
 					id_text_3.setAttribute("correct", (id_text_3.value == en_nl_words[wordIndex].super ? "yes" : "no"));
 				}
 			}
-			else {
-				console.log("ERROR [1]: submit()");
-			}
+			else { console.log("ERROR [1]: submit()"); }
 		}
 	</script>
 </body></html>
