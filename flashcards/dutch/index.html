@@ -152,6 +152,7 @@
 			{ part: "noun", en: "the debt; guilt; fault", si: "de schuld", pl: "schulden", correct: 0, incorrect: 0 },
 			{ part: "noun", en: "the gnome", si: "de kabouter", pl: "kabouters", correct: 0, incorrect: 0 },
 			{ part: "noun", en: "the quarrel; fight", si: "de ruzie", pl: "ruzies", correct: 0, incorrect: 0 },
+			{ part: "singular noun", en: "the violence", si: "het geweld", correct: 0, incorrect: 0 },
 			{ part: "indefinite pronoun", en: "sufficient; plenty of", std: "voldoende", correct: 0, incorrect: 0 },
 			{ part: "verb", en: "to launch", inf: "lanceren", pt: "lanceerde", pp: "gelanceerd", correct: 0, incorrect: 0 },
 			{ part: "verb", en: "to whine", inf: "zeiken", pt: "zeikte", pp: "gezeikt", correct: 0, incorrect: 0 },
@@ -200,6 +201,11 @@
 				id_label_span_2.innerHTML = "Plural:";
 				id_label_3.style.display = "none";
 			}
+			else if (en_nl_words[wordIndex].part == "singular noun") {
+				id_label_span_1.innerHTML = "Singular:";
+				id_label_2.style.display = "none";
+				id_label_3.style.display = "none";
+			}
 			else if (en_nl_words[wordIndex].part == "indefinite pronoun") {
 				id_label_span_1.innerHTML = "Stated:";
 				id_label_2.style.display = "none";
@@ -231,6 +237,10 @@
 					id_hint_1.innerHTML = en_nl_words[wordIndex].phrase;
 				}
 				else if (en_nl_words[wordIndex].part == "noun") {
+					id_text_1.setAttribute("placeholder", en_nl_words[wordIndex].si);
+					id_hint_1.innerHTML = en_nl_words[wordIndex].si;
+				}
+				else if (en_nl_words[wordIndex].part == "singular noun") {
 					id_text_1.setAttribute("placeholder", en_nl_words[wordIndex].si);
 					id_hint_1.innerHTML = en_nl_words[wordIndex].si;
 				}
@@ -298,6 +308,16 @@
 					en_nl_words[wordIndex].incorrect++;
 					id_text_1.setAttribute("correct", (id_text_1.value == en_nl_words[wordIndex].si ? "yes" : "no"));
 					id_text_2.setAttribute("correct", (id_text_2.value == en_nl_words[wordIndex].pl ? "yes" : "no"));
+				}
+			}
+			else if (en_nl_words[wordIndex].part == "singular noun") {
+				if (id_text_1.value.toLowerCase() == en_nl_words[wordIndex].si.toLowerCase()) {
+					en_nl_words[wordIndex].correct++;
+					loadWord();
+				}
+				else {
+					en_nl_words[wordIndex].incorrect++;
+					id_text_1.setAttribute("correct", "no");
 				}
 			}
 			else if (en_nl_words[wordIndex].part == "indefinite pronoun") {
